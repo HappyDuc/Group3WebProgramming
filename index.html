@@ -44,24 +44,31 @@
   </head>
 
   <body>
-    <nav>
+    <!-- Header -->
+    <nav class="header-bar">
+      <!-- Dropdown -->
       <div class="dropdown">
         <button
+          class="btn btn-outline-success"
           type="button"
-          class="btn btn-primary dropdown-toggle"
+          id="dropdownMenuButton"
           data-bs-toggle="dropdown"
+          aria-expanded="false"
         >
-        <i class="fa fa-home"></i>
+          <i class="fa fa-bars"></i>
         </button>
-
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Link 1</a></li>
-          <li><a class="dropdown-item" href="#">Link 2</a></li>
-          <li><a class="dropdown-item" href="#">Link 3</a></li>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+          <li><a class="dropdown-item" href="#">Menu</a></li>
+          <li><a class="dropdown-item" href="#">Order</a></li>
+          <li><a class="dropdown-item" href="#">T&Cs</a></li>
         </ul>
       </div>
+      <!-- Logo -->
+      <h1>HexMex</h1>
     </nav>
 
+    
+    <!-- Main Content -->
     <button type="button" class="btn btn-info">
       ORDER ORDER NOW NOW GO GO GO GO GO GO GO GO !!!
     </button>
