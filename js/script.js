@@ -1,12 +1,14 @@
 $(function () {
   $(".nav-placeholder").load("/htmlTemplates/navbar.html");
 
-  $(".dropdown").on("show.bs.dropdown", function () {
-    $(this).find(".dropdown-menu").first().stop(true, true).slideDown();
+  // Add slideDown animation to Bootstrap dropdown when expanding.
+  $('.dropdown').on('show.bs.dropdown', function() {
+    $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
   });
 
-  $(".dropdown").on("hide.bs.dropdown", function () {
-    $(this).find(".dropdown-menu").first().stop(true, true).slideUp();
+  // Add slideUp animation to Bootstrap dropdown when collapsing.
+  $('.dropdown').on('hide.bs.dropdown', function() {
+    $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
   });
 
   $(".dropdown-button").hover(
@@ -18,7 +20,7 @@ $(function () {
     }
   );
 
-  $(".dropdown-button").click(function (e) {
-    e.preventDefault();
-  });
+  //$(".dropdown-button").click(function (e) {
+  //  e.preventDefault();
+  //});
 });
