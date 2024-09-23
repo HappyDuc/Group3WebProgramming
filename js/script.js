@@ -1,3 +1,17 @@
+
+
+function textChange() {
+  console.log("fhfhbffb");
+  document.body.style.background = "#880000";
+
+}
+
+
+
+
+
+
+
 $(function () {
   $(".nav-placeholder").load("/htmlTemplates/navbar.html");
 
