@@ -1,3 +1,7 @@
+html {
+  background-color: green;
+}
+
 .oxygen-regular {
   font-family: "Oxygen", sans-serif;
   font-weight: 400;
@@ -16,4 +20,28 @@ p {
 /*for animation*/
 .dropdown-toggle:after {
   transition: 0.7s;
+}
+
+.menu-body {
+  font-family: "Oxygen", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.header-bar {
+  background-color: #000000; /* Dark background */
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.dropdown button {
+  color: green;
+  outline-color: green;
 }

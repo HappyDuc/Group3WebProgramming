@@ -4,12 +4,16 @@ CREATE TABLE orderTable (
     orderID Int,
     Ingredience boolean,
     FoodType Text,
-    PRIMARY KEY (orderID)
+    foodID int,
+    PRIMARY KEY (orderID),
+    FOREIGN KEY (foodID) REFERENCES foodContents(foodID)
 );
 
 CREATE TABLE ingredience (
     ingredienceID int,
-    PRIMARY KEY (ingredienceID)
+    foodID int,
+    PRIMARY KEY (ingredienceID),
+    FOREIGN KEY (foodID) REFERENCES foodContents(foodID)
 );
 
 CREATE TABLE foodContents (
