@@ -11,10 +11,10 @@ $(function () {
 
   $(".dropdown-button").hover(
     function () {
-      $(this).addClass("dropdown-toggle");
+      $(this).addClass("dropdown-button");
     },
     function () {
-      $(this).removeClass("dropdown-toggle");
+      $(this).removeClass("dropdown-button");
     }
   );
 
