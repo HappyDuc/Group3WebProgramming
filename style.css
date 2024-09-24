@@ -21,8 +21,3 @@ p {
 .dropdown-toggle:after {
   transition: 0.7s;
 }
-
-.dropdown>#navbarDropdownMenuLink {
-  color: green;
-  outline-color: green;
-}
