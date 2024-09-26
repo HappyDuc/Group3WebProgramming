@@ -73,14 +73,6 @@
       $(document).on("click", function () {
         $(".navbar .dropdown-menu").slideUp(200);
       });
-
-      // Keyboard navigation for accessibility
-      $(".navbar .dropdown").on("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          $(this).trigger("click");
-        }
-      });
     });
   </script>
 </nav>
