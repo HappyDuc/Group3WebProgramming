@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<!-- Navbar -->
+<nav class="navbar navbar-expand navbar-dark bg-dark">
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item dropdown">
@@ -14,9 +15,13 @@
             <i class="bi bi-list"> </i>
           </button>
 
-          <div class="dropdown-menu" aria-labelledby="triggerId">
-            <a class="dropdown-item" href="/menu.html">Menu</a>
-            <a class="dropdown-item" href="#">Disabled action</a>
+          <div
+            style="display: none"
+            class="dropdown-menu"
+            aria-labelledby="triggerId"
+          >
+            <a class="dropdown-item" href="/order.html">Order</a>
+            <a class="dropdown-item" href="/aboutUs.html">About us</a>
           </div>
         </div>
       </li>
@@ -33,7 +38,7 @@
   </div>
   <script>
     $(document).ready(function () {
-      // Adding hover effects
+      // Adds arrow indicated when button is hovered over.
       $("#triggerId").hover(
         function () {
           $(this).addClass("dropdown-toggle");
@@ -43,20 +48,24 @@
         }
       );
 
-      // Single dropdown logic
+      // Adds animation to the dropdown menu appearing.
       $(".navbar .dropdown")
         .off("click")
         .on("click", function (e) {
-          e.stopPropagation(); // Prevent the click from bubbling up
+          // Stops this from affecting other elements.
+          e.stopPropagation();
 
+          // Finds the dropdown menu.
           var $dropdownMenu = $(this).find(".dropdown-menu").first();
 
-          // Toggle dropdown visibility
+          // Checks if the dropdown if visible, if it is then slide it up, if not then slide it down.
           if ($dropdownMenu.is(":visible")) {
-            $dropdownMenu.stop(true, true).slideUp(200);
+            console.log("The menu is visible so is being slid up.");
+            $dropdownMenu.stop(true, true).slideUp();
           } else {
-            $(".navbar .dropdown-menu").slideUp(200); // Close any other open dropdowns
-            $dropdownMenu.stop(true, true).slideDown(200); // Open this one
+            console.log("The menu is not visible so is being slid down.");
+            $dropdownMenu.stop(true, true).slideDown();
+            $dropdownMenu.css("display", "block");
           }
         });
 
