@@ -1,23 +1,19 @@
 CREATE DATABASE MENU_INFO;
 
-CREATE TABLE orderTable (
+CREATE TABLE Order (
     orderID Int,
-    Ingredience boolean,
+    price float,
     FoodType Text,
     foodID int,
     PRIMARY KEY (orderID),
-    FOREIGN KEY (foodID) REFERENCES foodContents(foodID)
+    FOREIGN KEY (foodID) REFERENCES foodContent(foodID)
 );
 
-CREATE TABLE ingredience (
-    ingredienceID int,
+CREATE TABLE foodContent (
     foodID int,
-    PRIMARY KEY (ingredienceID),
-    FOREIGN KEY (foodID) REFERENCES foodContents(foodID)
-);
-
-CREATE TABLE foodContents (
-    foodID int,
-    alergen boolean,
+    foodType Text,
+    allergen boolean,
+    orderID int,
     PRIMARY KEY(foodID)
-);
+    FOREIGN KEY (orderID) REFERENCES Order(orderID)
+); 

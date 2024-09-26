@@ -1,7 +1,3 @@
-html {
-  background-color: green;
-}
-
 .oxygen-regular {
   font-family: "Oxygen", sans-serif;
   font-weight: 400;
@@ -21,8 +17,36 @@ p {
 .dropdown-toggle:after {
   transition: 0.7s;
 }
+#menuItemsGrid {
+  padding-bottom: 50px;
+}
 
-.dropdown>#navbarDropdownMenuLink {
-  color: green;
-  outline-color: green;
+.card {
+  border: none !important;
+}
+
+body {
+  background-color: rgba(0, 0, 0, 0.74) !important;
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+}
+
+body::before {
+  content: "";
+  background-image: url(images/menuImages/tacoTable.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.menu-title {
+  color: aliceblue;
 }
