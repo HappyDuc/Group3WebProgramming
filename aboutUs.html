@@ -1,12 +1,126 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head id="head">
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
-    <meta name="description" content="" />
+    <title>Welcome</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
+
+    <!-- Local CSS stylsheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Local Javascript script -->
+    <script src="/js/script.js"></script>
+
+    <!-- Bootstrap 5.3.3 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap Icon Font -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
   </head>
-  <body></body>
+
+  <body>
+    <!-- Navbar -->
+    <div class="template"></div>
+    <!-- Main Content -->
+    <div id="teamCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <!-- Jamie -->
+        <div class="carousel-item active card">
+          <img
+            src="/images/teamImages/Jamie.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="card-body">
+            <h1 class="card-title">Jamie</h1>
+            <p>Jamie is</p>
+          </div>
+        </div>
+        <!-- Jake -->
+        <div class="carousel-item card">
+          <img
+            src="/images/teamImages/Podium.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="card-body">
+            <h1 class="card-title">Jake</h1>
+            <p>Jake is</p>
+          </div>
+        </div>
+        <!-- Corey -->
+        <div class="carousel-item card">
+          <img
+            src="/images/teamImages/CoreyCombo.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="card-body">
+            <h1 class="card-title">Corey</h1>
+            <p>Corey is</p>
+          </div>
+        </div>
+        <!-- Ross -->
+        <div class="carousel-item card">
+          <img
+            src="/images/teamImages/RossHappy.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="card-body">
+            <h1 class="card-title">Ross</h1>
+            <p>Ross is</p>
+          </div>
+        </div>
+        <!-- Owen -->
+        <div class="carousel-item card">
+          <img
+            src="/images/teamImages/RossBladerunner.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="card-body">
+            <h1 class="card-title">Owen</h1>
+            <p>Owen is</p>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#teamCarousel"
+        data-bs-slide="prev"
+      >
+        <i class="bi bi-caret-left-fill carousel-control-icon"></i>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next btn-primary"
+        type="button"
+        data-bs-target="#teamCarousel"
+        data-bs-slide="next"
+      >
+        <i class="bi bi-caret-right-fill carousel-control-icon"></i>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- Bootstrap 5.3.3 Javascript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
