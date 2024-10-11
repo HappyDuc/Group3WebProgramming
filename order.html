@@ -39,7 +39,7 @@
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
           <!-- Menu Item 1 -->
           <div class="col">
-            <a class="text-reset text-decoration-none" href="customize.html">
+            <a class="text-reset text-decoration-none" href="#customize-title">
               <div class="card h-100" id="cardTest">
                 <img
                   src="/images/menuImages/burrito.jpg"
@@ -55,7 +55,7 @@
           </div>
           <!-- Menu Item 2 -->
           <div class="col">
-            <a class="text-reset text-decoration-none" href="customize.html">
+            <a class="text-reset text-decoration-none" href="#customize-title">
               <div class="card h-100">
                 <img
                   src="/images/menuImages/quesadilla.jpg"
@@ -71,7 +71,7 @@
           </div>
           <!-- Menu Item 3 -->
           <div class="col">
-            <a class="text-reset text-decoration-none" href="customize.html">
+            <a class="text-reset text-decoration-none" href="#customize-title">
               <div class="card h-100">
                 <img
                   src="/images/menuImages/tacos.jpg"
@@ -87,7 +87,7 @@
           </div>
           <!-- Menu Item 4 -->
           <div class="col">
-            <a class="text-reset text-decoration-none" href="customize.html">
+            <a class="text-reset text-decoration-none" href="#customize-title">
               <div class="card h-100">
                 <img
                   src="/images/menuImages/fajitas.jpg"
@@ -103,7 +103,7 @@
           </div>
           <!-- Menu Item 5 -->
           <div class="col">
-            <a class="text-reset text-decoration-none" href="customize.html">
+            <a class="text-reset text-decoration-none" href="#customize-title">
               <div class="card h-100">
                 <img
                   src="/images/menuImages/guacamole.jpg"
@@ -119,7 +119,7 @@
           </div>
           <!-- Menu Item 6 -->
           <div class="col">
-            <a class="text-reset text-decoration-none" href="customize.html">
+            <a class="text-reset text-decoration-none" href="#customize-title">
               <div class="card h-100">
                 <img
                   src="/images/menuImages/churros.jpg"
@@ -138,100 +138,194 @@
       </div>
     </div>
 
-    <!-- Bootstrap 5.3.3 Javascript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
     <!-- Customize Order Section -->
     <div class="content" id="customize">
       <div class="container">
-        <h1 class="customize-title">Customize Your Order</h1>
+        <h1 id="customize-title" class="customize-title">
+          Customize Your Order
+        </h1>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-          <div class='fillings'>
-            <div class="card p-3"> 
+          <div class="fillings">
+            <div class="card p-3">
               <h1>Fillings</h1>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="chicken" value="chicken" checked>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="chicken"
+                  value="chicken"
+                  checked
+                />
                 <label class="form-check-label" for="chicken">Chicken</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="jackfruit" value="jackfruit">
-                <label class="form-check-label" for="jackfruit">Jackfruit</label>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="jackfruit"
+                  value="jackfruit"
+                />
+                <label class="form-check-label" for="jackfruit"
+                  >Jackfruit</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="pork" value="pork">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="pork"
+                  value="pork"
+                />
                 <label class="form-check-label" for="pork">Pork</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="haggis" value="haggis">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="haggis"
+                  value="haggis"
+                />
                 <label class="form-check-label" for="haggis">Haggis</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="beef" value="beef">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="beef"
+                  value="beef"
+                />
                 <label class="form-check-label" for="beef">Beef</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="chorizo" value="chorizo">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="chorizo"
+                  value="chorizo"
+                />
                 <label class="form-check-label" for="chorizo">Chorizo</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="vegan-haggis" value="vegan-haggis">
-                <label class="form-check-label" for="vegan-haggis">Vegan Haggis</label>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="vegan-haggis"
+                  value="vegan-haggis"
+                />
+                <label class="form-check-label" for="vegan-haggis"
+                  >Vegan Haggis</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="chilli" value="bean-chilli">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="chilli"
+                  value="bean-chilli"
+                />
                 <label class="form-check-label" for="chilli">Bean Chilli</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="sausage" value="sausage">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="sausage"
+                  value="sausage"
+                />
                 <label class="form-check-label" for="sausage">Sausage</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="shrimp" value="shrimp">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="shrimp"
+                  value="shrimp"
+                />
                 <label class="form-check-label" for="shrimp">Shrimp</label>
               </div>
             </div>
           </div>
           <div class="toppings">
-            <div class="card p-3"> 
+            <div class="card p-3">
               <h1>Toppings</h1>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="cheese">
+                <input class="form-check-input" type="checkbox" id="cheese" />
                 <label class="form-check-label" for="cheese">Cheese</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="guacamole">
-                <label class="form-check-label" for="guacamole">Guacamole</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="guacamole"
+                />
+                <label class="form-check-label" for="guacamole"
+                  >Guacamole</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="salsa">
+                <input class="form-check-input" type="checkbox" id="salsa" />
                 <label class="form-check-label" for="salsa">Salsa</label>
               </div>
               <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="lettuce">
-                  <label class="form-check-label" for="lettuce">Lettuce</label>
+                <input class="form-check-input" type="checkbox" id="lettuce" />
+                <label class="form-check-label" for="lettuce">Lettuce</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="picodegallo">
-                <label class="form-check-label" for="picodegallo">Pico de gallo</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="picodegallo"
+                />
+                <label class="form-check-label" for="picodegallo"
+                  >Pico de gallo</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="sour-cream">
-                <label class="form-check-label" for="sour-cream">Sour cream</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="sour-cream"
+                />
+                <label class="form-check-label" for="sour-cream"
+                  >Sour cream</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="bbq">
+                <input class="form-check-input" type="checkbox" id="bbq" />
                 <label class="form-check-label" for="bbq">BBQ</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="chip-mayo">
-                <label class="form-check-label" for="chip-mayo">Chipotle Mayo</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="chip-mayo"
+                />
+                <label class="form-check-label" for="chip-mayo"
+                  >Chipotle Mayo</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="nacho-crunch">
-                <label class="form-check-label" for="nacho-crunch">Nacho Crunch</label>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="nacho-crunch"
+                />
+                <label class="form-check-label" for="nacho-crunch"
+                  >Nacho Crunch</label
+                >
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="slaw">
+                <input class="form-check-input" type="checkbox" id="slaw" />
                 <label class="form-check-label" for="slaw">Rainbow Slaw</label>
               </div>
             </div>
@@ -239,10 +333,10 @@
           <div class="summary">
             <div class="card p-3 h-100">
               <h1>Order Summary</h1>
-              <br>
+              <br />
               <h5>Chicken</h5>
-              <H6>Guacamole<br>Cheese<br>Lettuce<br>Sour cream</H6>
-              <br>
+              <h6>Guacamole<br />Cheese<br />Lettuce<br />Sour cream</h6>
+              <br />
               <p>Price: £9.95</p>
               <a href="basket.html" class="btn btn-success btn-lg">Checkout</a>
             </div>
@@ -250,5 +344,12 @@
         </div>
       </div>
     </div>
+
+    <!-- Bootstrap 5.3.3 Javascript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
