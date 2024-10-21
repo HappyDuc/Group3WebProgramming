@@ -41,3 +41,27 @@ addItem(foodItem){
 }
 
 
+
+$(document).ready(function() {
+  
+  function updateSummary() {
+    // Get selected filling
+    const filling = $('input[name="flexRadioDefault"]:checked').val();
+    $('#summary-filling').text(filling.charAt(0).toUpperCase() + filling.slice(1));
+
+    // Get selected toppings
+    const toppings = [];
+    $('input[type="checkbox"]:checked').each(function() {
+      toppings.push($(this).next('label').text());
+    });
+    $('#summary-toppings').html(toppings.length ? toppings.join('<br>') : 'None');
+  }
+
+  // Event listeners for filling and topping changes
+  $('input[name="flexRadioDefault"]').change(updateSummary);
+  $('input[type="checkbox"]').change(updateSummary);
+
+  // Initial update
+  updateSummary();
+});
+
