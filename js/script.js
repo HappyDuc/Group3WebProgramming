@@ -41,9 +41,9 @@ addItem(foodItem){
 }
 
 
-
+// Updates the food order summary section within the order page
 $(document).ready(function() {
-  
+
   function updateSummary() {
     // Get selected filling
     const filling = $('input[name="flexRadioDefault"]:checked').val();
