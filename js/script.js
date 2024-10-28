@@ -47,7 +47,7 @@ $(document).ready(function() {
   function updateSummary() {
     // Get selected filling
     const filling = $('input[name="flexRadioDefault"]:checked').val();
-    $('#summary-filling').text(filling.charAt(0).toUpperCase() + filling.slice(1));
+    $('#summary-filling').text();
 
     // Get selected toppings
     const toppings = [];

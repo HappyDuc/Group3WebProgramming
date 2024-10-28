@@ -79,8 +79,16 @@ body::before {
   border: 2px solid #00812b !important; 
 }
 
-.summary .card {
-  max-height: 350px;
-  overflow-y: auto;  
+.summary .info {
+  max-height: 350px !important;
+  overflow-y: auto  !important;  
 }
 
+.summary .btn-group {
+  margin-top: 80px !important;
+}
+
+.summary .btn { 
+  border-color: white; 
+  border-style: solid;
+}
