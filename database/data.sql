@@ -1,19 +1,22 @@
 CREATE DATABASE MENU_INFO;
 
-CREATE TABLE Order (
-    orderID Int,
-    price float,
-    FoodType Text,
-    foodID int,
+-- Select the database
+USE MENU_INFO;
+
+CREATE TABLE payment (
+    orderID INT,
+    price FLOAT,
+    FoodType TEXT,
+    foodID INT,
     PRIMARY KEY (orderID),
     FOREIGN KEY (foodID) REFERENCES foodContent(foodID)
 );
 
 CREATE TABLE foodContent (
-    foodID int,
-    foodType Text,
-    allergen boolean,
-    orderID int,
-    PRIMARY KEY(foodID)
-    FOREIGN KEY (orderID) REFERENCES Order(orderID)
-); 
+    foodID INT,
+    foodType TEXT,
+    allergen BOOLEAN,
+    orderID INT,
+    PRIMARY KEY (foodID),
+    FOREIGN KEY (orderID) REFERENCES payment(orderID)
+);
