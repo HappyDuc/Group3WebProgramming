@@ -332,6 +332,13 @@
           </div>
           <div class="summary">
             <div class="card p-3 h-100">
+              <h1>Order Summary</h1>
+              <br>
+              <h5 id="summary-filling">Chicken</h5>
+              <h6 id="summary-toppings"></h6>
+              
+              <p id="summary-price">Price: £9.95</p>
+              <a href="basket.html" class="btn btn-success btn-lg">Checkout</a>
               <div class="info">
                 <h1>Order Summary</h1>
                 <br>
@@ -341,8 +348,10 @@
               </div>
               <div class="btn-group">
                 <a class="btn btn-success btn-lg">Add to cart</a>  
-                <a href="basket.html" class="btn btn-success btn-lg">Checkout</a> 
+                <a href="basket.html" onclick="basket.save()"
+                class="btn btn-success btn-lg">Checkout</a> 
               </div>
+
             </div>
           </div>
         </div>

@@ -11,39 +11,39 @@ const carousel = new bootstrap.Carousel(myCarouselElement, {
 
 */
 
-
-
-function addItem(basket, foodItem){
-    console.log('item added yay')
-    basket.addItem(foodItem);
-    console.log('item added yay')
+function addItem(basket, foodItem) {
+  console.log("item added yay");
+  basket.addItem(foodItem);
+  console.log("item added yay");
 }
 
-
-class FoodItem{
+class FoodItem {
   constructor(price, name, image) {
     this.price = price;
     this.name = name;
     this.image = image;
+    this.filling = filling;
+    this.toppings = [];
   }
 }
 
-class basket{
+class basket {
+  constructor() {
+    this.contents = [];
+  }
 
-constructor(){
-  this.contents = [];
-}
+  addItem(foodItem) {
+    this.contents.push(foodItem);
+  }
 
-addItem(foodItem){
-    this.contents.push(foodItem)
-    console.log('item added to basket')
+  save() {
+    console.log(JSON.stringify(this));
+    sessionStorage.setItem("basket", JSON.stringify(this));
   }
 }
-
 
 // Updates the food order summary section within the order page
-$(document).ready(function() {
-
+$(document).ready(function () {
   function updateSummary() {
     // Get selected filling
     const filling = $('input[name="flexRadioDefault"]:checked').val();
@@ -51,10 +51,12 @@ $(document).ready(function() {
 
     // Get selected toppings
     const toppings = [];
-    $('input[type="checkbox"]:checked').each(function() {
-      toppings.push($(this).next('label').text());
+    $('input[type="checkbox"]:checked').each(function () {
+      toppings.push($(this).next("label").text());
     });
-    $('#summary-toppings').html(toppings.length ? toppings.join('<br>') : 'None');
+    $("#summary-toppings").html(
+      toppings.length ? toppings.join("<br>") : "None"
+    );
   }
 
   // Event listeners for filling and topping changes
@@ -64,4 +66,3 @@ $(document).ready(function() {
   // Initial update
   updateSummary();
 });
-
