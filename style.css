@@ -85,10 +85,6 @@ body::before {
 }
 
 .summary .btn-group {
-  margin-top: 80px !important;
+  padding-top: 50px !important;
 }
 
-.summary .btn { 
-  border-color: white; 
-  border-style: solid;
-}

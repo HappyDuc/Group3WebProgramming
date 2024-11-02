@@ -42,27 +42,32 @@ class basket {
   }
 }
 
-// Updates the food order summary section within the order page
 $(document).ready(function () {
-  function updateSummary() {
-    // Get selected filling
-    const filling = $('input[name="flexRadioDefault"]:checked').val();
-    $('#summary-filling').text();
+  let selectedBase = '';
 
-    // Get selected toppings
-    const toppings = [];
-    $('input[type="checkbox"]:checked').each(function () {
-      toppings.push($(this).next("label").text());
-    });
-    $("#summary-toppings").html(
-      toppings.length ? toppings.join("<br>") : "None"
-    );
+  function updateSummary() {
+    // Get selected filling from radios and update 
+    const filling = $('input[name="flexRadioDefault"]:checked').val();
+    if (filling) {
+      $('#summary-filling').text(filling.charAt(0).toUpperCase() + filling.slice(1));
+    } else {
+      $('#summary-filling').text('Select Filling');
+    }
+    // Update base name 
+    $('#summary-base').text(selectedBase || 'Select Base');
   }
 
-  // Event listeners for filling and topping changes
+  // Event listener for filling selection
   $('input[name="flexRadioDefault"]').change(updateSummary);
-  $('input[type="checkbox"]').change(updateSummary);
 
-  // Initial update
+  // Event listener for base selection 
+  $('#menuItemsGrid .card').on('click', function (e) {
+   
+    selectedBase = $(this).find('.card-title').text();
+
+    updateSummary();
+  });
+
+  // Initial update for default selections
   updateSummary();
 });
