@@ -75,6 +75,26 @@ $(document).ready(function () {
    
     selectedBase = $(this).find('.card-title').text();
 
+    // If Dip and Chip or Churros is selected hide appropriate sections (e.g. churros cannot have a topping)
+    if (selectedBase === "Dip and Chip") {
+      // Hide the fillings section
+      $('.fillings').hide();
+      $('.toppings').show();
+      $('#summary-filling').hide();
+      $('.summary').css('height', 'auto');
+    } else if (selectedBase === "Churros") { 
+      $('.fillings').hide();
+      $('.toppings').hide();
+      $('#summary-filling').hide();
+      $('.summary').css('height', '322px');
+    } else {
+      // Show the fillings section
+      $('.toppings').show();
+      $('.fillings').show();
+      $('#summary-filling').show();
+      $('.summary').css('height', 'auto');
+    }
+
     updateSummary();
   });
 
