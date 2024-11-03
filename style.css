@@ -6,8 +6,17 @@
   transition: 0.7s;
 }
 
+#base {
+  margin-bottom: 50px;
+}
+
 #customize{
+  display: none;
   padding-bottom: 50px;
+}
+
+.zoneSeperator {
+  display: none;
 }
 
 .card {
@@ -86,5 +95,10 @@ body::before {
 
 .summary .btn-group {
   padding-top: 50px !important;
+}
+
+.summary .btn { 
+  border-color: white; 
+  border-style: solid;
 }
 

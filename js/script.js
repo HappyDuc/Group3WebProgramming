@@ -42,8 +42,18 @@ class basket {
   }
 }
 
+function showCustomize() {
+  // Function reveals zone seperator and customize section when a menu item is clicked
+  $('#menuItemsGrid .card').on('click', function (e) {
+    $('.zoneSeperator').show(); 
+    $('#customize').show(); 
+  });
+}
+
+// Function updates the order summary section when customising an order
 $(document).ready(function () {
   let selectedBase = '';
+  showCustomize();
 
   function updateSummary() {
     // Get selected filling from radios and update 
