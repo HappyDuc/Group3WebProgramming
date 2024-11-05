@@ -42,27 +42,62 @@ class basket {
   }
 }
 
-// Updates the food order summary section within the order page
-$(document).ready(function () {
-  function updateSummary() {
-    // Get selected filling
-    const filling = $('input[name="flexRadioDefault"]:checked').val();
-    $('#summary-filling').text();
+function showCustomize() {
+  // Function reveals zone seperator and customize section when a menu item is clicked
+  $('#menuItemsGrid .card').on('click', function (e) {
+    $('.zoneSeperator').show(); 
+    $('#customize').show(); 
+  });
+}
 
-    // Get selected toppings
-    const toppings = [];
-    $('input[type="checkbox"]:checked').each(function () {
-      toppings.push($(this).next("label").text());
-    });
-    $("#summary-toppings").html(
-      toppings.length ? toppings.join("<br>") : "None"
-    );
+// Function updates the order summary section when customising an order
+$(document).ready(function () {
+  let selectedBase = '';
+  showCustomize();
+
+  function updateSummary() {
+    // Get selected filling from radios and update 
+    const filling = $('input[name="flexRadioDefault"]:checked').val();
+    if (filling) {
+      $('#summary-filling').text(filling.charAt(0).toUpperCase() + filling.slice(1));
+    } else {
+      $('#summary-filling').text('Select Filling');
+    }
+    // Update base name 
+    $('#summary-base').text(selectedBase || 'Select Base');
   }
 
-  // Event listeners for filling and topping changes
+  // Event listener for filling selection
   $('input[name="flexRadioDefault"]').change(updateSummary);
-  $('input[type="checkbox"]').change(updateSummary);
 
-  // Initial update
+  // Event listener for base selection 
+  $('#menuItemsGrid .card').on('click', function (e) {
+   
+    selectedBase = $(this).find('.card-title').text();
+
+    // If Dip and Chip or Churros is selected hide appropriate sections (e.g. churros cannot have a topping)
+    if (selectedBase === "Dip and Chip") {
+      // Hide the fillings section
+      $('.fillings').hide();
+      $('.toppings').show();
+      $('#summary-filling').hide();
+      $('.summary').css('height', 'auto');
+    } else if (selectedBase === "Churros") { 
+      $('.fillings').hide();
+      $('.toppings').hide();
+      $('#summary-filling').hide();
+      $('.summary').css('height', '322px');
+    } else {
+      // Show the fillings section
+      $('.toppings').show();
+      $('.fillings').show();
+      $('#summary-filling').show();
+      $('.summary').css('height', 'auto');
+    }
+
+    updateSummary();
+  });
+
+  // Initial update for default selections
   updateSummary();
 });
