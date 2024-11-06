@@ -1,30 +1,39 @@
+// Object decleration for a food item 
+class FoodItem {
+  constructor(price, filling, toppings, base) {
+    this.price = price;
+    this.filling = filling;
+    this.toppings = toppings;
+    this.base = base; 
+  }
+}
+
+
+// Function will (hopefully) add a food item to session storage 
+function addToCart() {
+  const base = $(this).find('.card-title').text();
+  const filling = $('input[name="flexRadioDefault"]:checked').val();
+  const toppings = Array.from(document.querySelectorAll('.toppings input[type="checkbox"]:checked')).map(topping => topping.id);
+  const price = 9.95;
+
+  const foodItem = new FoodItem(price, filling, toppings, base);
+
+  let id = "item1"
+
+  sessionStorage.setItem(id, JSON.stringify(foodItem));
+}
+
+
 $(function () {
   $(".template").load("/template.html");
 });
 
 const myCarouselElement = document.querySelector("#teamCarousel");
-/*
-const carousel = new bootstrap.Carousel(myCarouselElement, {
-  interval: 2000,
-  touch: false,
-});
-
-*/
 
 function addItem(basket, foodItem) {
   console.log("item added yay");
   basket.addItem(foodItem);
   console.log("item added yay");
-}
-
-class FoodItem {
-  constructor(price, name, image) {
-    this.price = price;
-    this.name = name;
-    this.image = image;
-    this.filling = filling;
-    this.toppings = [];
-  }
 }
 
 class basket {
