@@ -8,7 +8,7 @@ class FoodItem {
   }
 }
 
-var counter = 0;
+var idCounter = 0; /// initialise counter of foodItem ids 
 
 // Function will (hopefully) add a food item to session storage
 function addToCart() {
@@ -20,12 +20,12 @@ function addToCart() {
   const price = 9.95; /// this will change
 
   const foodItem = new FoodItem(price, filling, toppings, base); 
-  counter++;
-  let id = "Item"+ counter; /// create a new id for the new food item then increment counter
+  idCounter++;
+  let id = "Item"+ idCounter; /// create a new id for the new food item then increment counter
   sessionStorage.setItem(id, JSON.stringify(foodItem));
   defaultForms(); /// resets forms to empty
   defaultSummary();
-  $("#checkout-button").text("Checkout to enjoy : "+counter+" Items");
+  $("#checkout-button").text("Checkout to enjoy : "+idCounter+" Items");
   //console.log("addToCart ran");
 
 }
@@ -52,20 +52,7 @@ $(function () {
 
 const myCarouselElement = document.querySelector("#teamCarousel");
 
-class basket { /// basket is not used yet, once checkout is clicked, get all orders from stringify and add to array, if not needed, delete class
-  constructor() {
-    this.contents = [];
-  }
 
-  addItem(foodItem) {
-    this.contents.push(foodItem);
-  }
-
-  static save() { /// this will be modified to JSON destringify(???) the items from session storage
-    console.log(JSON.stringify(this));
-    sessionStorage.setItem("basket", JSON.stringify(this));
-  }
-}
 
 function showCustomize() {
   // Function reveals zone seperator and customize section when a menu item is clicked
