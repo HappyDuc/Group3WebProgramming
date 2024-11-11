@@ -1,0 +1,18 @@
+to do :
+
+onClick of add to cart, run javascript function to get all checked boxes for filling
+and toppings, create food item instance with all contents, stringify to session storage with
+incrementing id, reset all checkboxes and order summary.
+
+
+JSON string to Obj method in basket.html, create cart item display for each item in basket
+display total price at bottom
+
+code BANANA 100% at checkout
+
+
+
+
+
+
+correct prices for menu and items so they match up

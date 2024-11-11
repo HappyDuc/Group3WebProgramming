@@ -8,21 +8,34 @@ class FoodItem {
   }
 }
 
+var counter = 1;
+
 // Function will (hopefully) add a food item to session storage
 function addToCart() {
   const base = $(this).find(".card-title").text();
   const filling = $('input[name="flexRadioDefault"]:checked').val();
   const toppings = Array.from(
-    document.querySelectorAll('.toppings input[type="checkbox"]:checked')
+    document.querySelectorAll('.toppings input[type="checkbox"]:checked') /// checkbox is type but radio is name???
   ).map((topping) => topping.id);
   const price = 9.95;
 
   const foodItem = new FoodItem(price, filling, toppings, base);
 
-  let id = "item1";
-
+  let id = "Item"+ counter;
+  counter++;
   sessionStorage.setItem(id, JSON.stringify(foodItem));
+  defaultForms();
+  //console.log("addToCart ran");
+
 }
+
+// function will reset the forms to unchecked after the item has been added, will occur after itemAdded
+function defaultForms(){
+  $("input[name='flexRadioDefault']").prop('checked', false);
+  $("input[type='checkbox']").prop('checked', false);
+}
+
+
 
 $(function () {
   $(".template").load("template");
@@ -30,13 +43,7 @@ $(function () {
 
 const myCarouselElement = document.querySelector("#teamCarousel");
 
-function addItem(basket, foodItem) {
-  console.log("item added yay");
-  basket.addItem(foodItem);
-  console.log("item added yay");
-}
-
-class basket {
+class basket { /// basket is not used yet, once checkout is clicked, get all orders from stringify and add to array, if not needed, delete class
   constructor() {
     this.contents = [];
   }
@@ -58,6 +65,11 @@ function showCustomize() {
     $("#customize").show();
   });
 }
+
+
+
+
+
 
 // Function updates the order summary section when customising an order
 $(document).ready(function () {
