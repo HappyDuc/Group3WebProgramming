@@ -8,7 +8,7 @@ class FoodItem {
   }
 }
 
-var counter = 1;
+var counter = 0;
 
 // Function will (hopefully) add a food item to session storage
 function addToCart() {
@@ -17,24 +17,33 @@ function addToCart() {
   const toppings = Array.from(
     document.querySelectorAll('.toppings input[type="checkbox"]:checked') /// checkbox is type but radio is name???
   ).map((topping) => topping.id);
-  const price = 9.95;
+  const price = 9.95; /// this will change
 
-  const foodItem = new FoodItem(price, filling, toppings, base);
-
-  let id = "Item"+ counter;
+  const foodItem = new FoodItem(price, filling, toppings, base); 
   counter++;
+  let id = "Item"+ counter; /// create a new id for the new food item then increment counter
   sessionStorage.setItem(id, JSON.stringify(foodItem));
-  defaultForms();
+  defaultForms(); /// resets forms to empty
+  defaultSummary();
+  $("#checkout-button").text("Checkout to enjoy : "+counter+" Items");
   //console.log("addToCart ran");
 
 }
 
-// function will reset the forms to unchecked after the item has been added, will occur after itemAdded
+//resets the forms to unchecked after the item has been added, will occur after itemAdded
 function defaultForms(){
   $("input[name='flexRadioDefault']").prop('checked', false);
   $("input[type='checkbox']").prop('checked', false);
 }
 
+//resets the summary to being empty after adding an order to the cart
+function defaultSummary(){ 
+  $("#summary-base").text("Select Base");
+  $("#summary-filling").text("Select Filling");
+  $("#add-to-cart-button").text("item added to cart")
+  //$(".zoneSeperator").hide(); these lines make it unclear that the order has gone through
+  //$("#customize").hide(); rather, a success message should appear
+}
 
 
 $(function () {
@@ -52,7 +61,7 @@ class basket { /// basket is not used yet, once checkout is clicked, get all ord
     this.contents.push(foodItem);
   }
 
-  static save() {
+  static save() { /// this will be modified to JSON destringify(???) the items from session storage
     console.log(JSON.stringify(this));
     sessionStorage.setItem("basket", JSON.stringify(this));
   }
