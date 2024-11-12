@@ -10,7 +10,7 @@ class FoodItem {
 
 var idCounter = 0; /// initialise counter of foodItem ids 
 
-// Function will (hopefully) add a food item to session storage
+// Function adds a food item to session storage
 function addToCart() {
   const base = $(this).find(".card-title").text();
   const filling = $('input[name="flexRadioDefault"]:checked').val();
@@ -26,8 +26,7 @@ function addToCart() {
   defaultForms(); /// resets forms to empty
   defaultSummary();
   $("#checkout-button").text("Checkout to enjoy : "+idCounter+" Items");
-  //console.log("addToCart ran");
-
+  console.log("Item added to cart");
 }
 
 //resets the forms to unchecked after the item has been added, will occur after itemAdded
