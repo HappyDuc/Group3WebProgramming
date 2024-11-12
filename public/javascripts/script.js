@@ -27,6 +27,8 @@ function addToCart() {
   defaultSummary();
   $("#checkout-button").text("Checkout to enjoy : "+idCounter+" Items");
   console.log("Item added to cart");
+  $(".zoneSeperator").hide(); // hide customize section and zone seperator 
+  $("#customize").hide();
 }
 
 //resets the forms to unchecked after the item has been added, will occur after itemAdded
@@ -60,6 +62,8 @@ function showCustomize() {
     $("#customize").show();
   });
 }
+
+
 
 
 
