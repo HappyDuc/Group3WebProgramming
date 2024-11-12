@@ -8,21 +8,44 @@ class FoodItem {
   }
 }
 
-// Function will (hopefully) add a food item to session storage
+var idCounter = 0; /// initialise counter of foodItem ids 
+
+// Function adds a food item to session storage
 function addToCart() {
   const base = $(this).find(".card-title").text();
   const filling = $('input[name="flexRadioDefault"]:checked').val();
   const toppings = Array.from(
-    document.querySelectorAll('.toppings input[type="checkbox"]:checked')
+    document.querySelectorAll('.toppings input[type="checkbox"]:checked') /// checkbox is type but radio is name???
   ).map((topping) => topping.id);
-  const price = 9.95;
+  const price = 9.95; /// this will change
 
-  const foodItem = new FoodItem(price, filling, toppings, base);
-
-  let id = "item1";
-
+  const foodItem = new FoodItem(price, filling, toppings, base); 
+  idCounter++;
+  let id = "Item"+ idCounter; /// create a new id for the new food item then increment counter
   sessionStorage.setItem(id, JSON.stringify(foodItem));
+  defaultForms(); /// resets forms to empty
+  defaultSummary();
+  $("#checkout-button").text("Checkout to enjoy : "+idCounter+" Items");
+  console.log("Item added to cart");
+  //$(".zoneSeperator").hide(); // hide customize section and zone seperator 
+  //$("#customize").hide();
 }
+
+//resets the forms to unchecked after the item has been added, will occur after itemAdded
+function defaultForms(){
+  $("input[name='flexRadioDefault']").prop('checked', false);
+  $("input[type='checkbox']").prop('checked', false);
+}
+
+//resets the summary to being empty after adding an order to the cart
+function defaultSummary(){ 
+  $("#summary-base").text("Select Base");
+  $("#summary-filling").text("Select Filling");
+  $("#add-to-cart-button").text("item added to cart")
+  //$(".zoneSeperator").hide(); these lines make it unclear that the order has gone through
+  //$("#customize").hide(); rather, a success message should appear
+}
+
 
 $(function () {
   $(".template").load("template");
@@ -30,26 +53,7 @@ $(function () {
 
 const myCarouselElement = document.querySelector("#teamCarousel");
 
-function addItem(basket, foodItem) {
-  console.log("item added yay");
-  basket.addItem(foodItem);
-  console.log("item added yay");
-}
 
-class basket {
-  constructor() {
-    this.contents = [];
-  }
-
-  addItem(foodItem) {
-    this.contents.push(foodItem);
-  }
-
-  static save() {
-    console.log(JSON.stringify(this));
-    sessionStorage.setItem("basket", JSON.stringify(this));
-  }
-}
 
 function showCustomize() {
   // Function reveals zone seperator and customize section when a menu item is clicked
@@ -58,6 +62,13 @@ function showCustomize() {
     $("#customize").show();
   });
 }
+
+
+
+
+
+
+
 
 // Function updates the order summary section when customising an order
 $(document).ready(function () {
