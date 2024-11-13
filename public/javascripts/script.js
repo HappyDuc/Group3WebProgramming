@@ -132,6 +132,8 @@ function showCustomize() {
 
 
 
+
+
 // Function updates the order summary section when customising an order
 $(document).ready(function () {
   let selectedBase = "";
