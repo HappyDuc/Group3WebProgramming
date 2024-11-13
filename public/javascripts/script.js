@@ -1,5 +1,5 @@
 // Object decleration for a food item
-class FoodItem {
+class MainItem {
   constructor(price, filling, toppings, base, id) { /// this is for the mains
     this.price = price;
     this.filling = filling;
@@ -7,20 +7,23 @@ class FoodItem {
     this.base = base;
     this.id = id;
   }
+}
 
+class DipChip {
   constructor(price, toppings, base, id) { /// this is for the dip and chip
     this.price = price;
     this.toppings = toppings;
     this.base = base;
     this.id = id;
   }
+}
 
+class Churro {
   constructor(price, base, id) { /// this is for the churros
     this.price = price;
     this.base = base;
     this.id = id;
   }
-
 }
 
 class Basket { /// basket will just be an array of items
@@ -71,17 +74,17 @@ function addToCart() {
 
   idCounter++;
 
-  if (base = "Churros"){
-    const foodItem = new FoodItem(4.95, base, idCounter);
-    basket.contents.push(JSON.stringify(price + "+" + base + "+" + idCounter));
+  if (base === "Churros"){
+    const churro = new Churro(4.95, base, idCounter);
+    basket.contents.push(JSON.stringify(churro.price + "+" + base + "+" + idCounter));
   }
-  else if (base = "Dip and Chip"){
-    const foodItem = new FoodItem(5.95,toppings, base, idCounter);
-    basket.contents.push(JSON.stringify(price + "+" + toppings + "+" + base + "+" + idCounter));
+  else if (base === "Dip and Chip"){
+    const dipChip = new DipChip(5.95,toppings, base, idCounter);
+    basket.contents.push(JSON.stringify(dipChip.price + "+" + toppings + "+" + base + "+" + idCounter));
   }
   else{/// item is a main
-    const foodItem = new FoodItem(price, filling, toppings, base, idCounter);
-    basket.contents.push(JSON.stringify(price + "+" + filling + "+" + toppings + "+" + base + "+" + idCounter));
+    const mainItem = new MainItem(price, filling, toppings, base, idCounter);
+    basket.contents.push(JSON.stringify(mainItem.price + "+" + filling + "+" + toppings + "+" + base + "+" + idCounter));
   }
   //sessionStorage.setItem(idCounter, JSON.stringify(foodItem));
   

@@ -5,6 +5,7 @@ const databaseConnection = mysql.createConnection({
   user: "root",
   password: "",
 });
+/*
 databaseConnection.connect(function (err) {
   if (err) throw err;
   databaseConnection.query("CREATE DATABASE db", function (err, result) {
@@ -14,3 +15,4 @@ databaseConnection.connect(function (err) {
 });
 
 module.exports = databaseConnection;
+*
