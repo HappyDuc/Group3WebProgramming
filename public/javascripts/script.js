@@ -159,6 +159,7 @@ $(document).ready(function () {
     }
     // Update base name
     $("#summary-base").text(selectedBase || "Select Base");
+    //$("#summary-price").text($(this).find(".card-text").text()); /// update the item price
   }
 
   // Event listener for filling selection
