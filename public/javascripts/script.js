@@ -40,7 +40,12 @@ class Basket { /// basket will just be an array of items
 
 /// make a function that will take the contents ad add to the basket
 
-function fillBasket(){
+function getItemsFromBasket(){
+  let basket = JSON.parse(sessionStorage.getItem("basket"));
+  for(item in basket.contents){
+    console.log(item)
+  }
+
 
   //var contents = sessionStorage.getItem()
 }
