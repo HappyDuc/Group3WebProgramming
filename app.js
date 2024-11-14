@@ -4,6 +4,10 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+// Connect to and create SQL database
+//const database = require("./databaseConnection");
+
+// Import routing files
 var aboutUsRouter = require("./routes/aboutUs");
 var basketRouter = require("./routes/basket");
 var confirmationRouter = require("./routes/confirmation");

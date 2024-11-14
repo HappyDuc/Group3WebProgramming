@@ -1,28 +1,101 @@
 // Object decleration for a food item
-class FoodItem {
-  constructor(price, filling, toppings, base) {
+class MainItem {
+  constructor(price, filling, toppings, base, id) { /// this is for the mains
     this.price = price;
     this.filling = filling;
     this.toppings = toppings;
     this.base = base;
+    this.id = id;
   }
 }
 
+class DipChip {
+  constructor(price, toppings, base, id) { /// this is for the dip and chip
+    this.price = price;
+    this.toppings = toppings;
+    this.base = base;
+    this.id = id;
+  }
+}
+
+class Churro {
+  constructor(price, base, id) { /// this is for the churros
+    this.price = price;
+    this.base = base;
+    this.id = id;
+  }
+}
+
+class Basket { /// basket will just be an array of items
+  constructor() {
+    this.contents = [];
+  }
+
+  pushItem(item){
+    this.contents.push(item);
+  }
+
+}
+
+
+/// make a function that will take the contents ad add to the basket
+
+function getItemsFromBasket(){
+  let basket = JSON.parse(sessionStorage.getItem("basket"));
+  for(item in basket.contents){
+    console.log(item)
+  }
+
+
+  //var contents = sessionStorage.getItem()
+}
+
+
+
+
+
 var idCounter = 0; /// initialise counter of foodItem ids 
+
+
+function createBasket(){
+  const basket = new Basket();
+  console.log("all done")
+  sessionStorage.setItem("basket", JSON.stringify(basket))
+  
+}
+
 
 // Function will (hopefully) add a food item to session storage
 function addToCart() {
-  const base = $(this).find(".card-title").text();
+  let basket = JSON.parse(sessionStorage.getItem("basket"));
+  console.log(typeof(basket));
+
+  const base = $("#summary-base").text(); /// this isnt quite right
   const filling = $('input[name="flexRadioDefault"]:checked').val();
   const toppings = Array.from(
     document.querySelectorAll('.toppings input[type="checkbox"]:checked') /// checkbox is type but radio is name???
   ).map((topping) => topping.id);
   const price = 9.95; /// this will change
 
-  const foodItem = new FoodItem(price, filling, toppings, base); 
   idCounter++;
-  let id = "Item"+ idCounter; /// create a new id for the new food item then increment counter
-  sessionStorage.setItem(id, JSON.stringify(foodItem));
+
+  if (base === "Churros"){
+    const churro = new Churro(4.95, base, idCounter);
+    basket.contents.push(JSON.stringify(churro.price + "+" + base + "+" + idCounter));
+  }
+  else if (base === "Dip and Chip"){
+    const dipChip = new DipChip(5.95,toppings, base, idCounter);
+    basket.contents.push(JSON.stringify(dipChip.price + "+" + toppings + "+" + base + "+" + idCounter));
+  }
+  else{/// item is a main
+    const mainItem = new MainItem(price, filling, toppings, base, idCounter);
+    basket.contents.push(JSON.stringify(mainItem.price + "+" + filling + "+" + toppings + "+" + base + "+" + idCounter));
+  }
+  //sessionStorage.setItem(idCounter, JSON.stringify(foodItem));
+  
+  /// here, instead of pushing to session storage, i need to add it to the basket
+
+  sessionStorage.setItem("basket", JSON.stringify(basket));
   defaultForms(); /// resets forms to empty
   defaultSummary();
   $("#checkout-button").text("Checkout to enjoy : "+idCounter+" Items");
@@ -67,6 +140,8 @@ function showCustomize() {
 
 
 
+
+
 // Function updates the order summary section when customising an order
 $(document).ready(function () {
   let selectedBase = "";
@@ -84,6 +159,7 @@ $(document).ready(function () {
     }
     // Update base name
     $("#summary-base").text(selectedBase || "Select Base");
+    //$("#summary-price").text($(this).find(".card-text").text()); /// update the item price
   }
 
   // Event listener for filling selection

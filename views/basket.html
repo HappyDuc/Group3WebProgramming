@@ -46,25 +46,26 @@
                 <div
                   class="row d-flex justify-content-between align-items-center"
                 >
-                  <div class="col-md-2 col-lg-2 col-xl-2">
+                  <div class="col-md-2 col-lg-2 col-xl-2"> 
                     <img
+                      id="itemImage"   
                       src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
                       class="img-fluid rounded-3"
                       alt="Cotton T-shirt"
                     />
                   </div>
-                  <div class="col-md-3 col-lg-3 col-xl-3">
+                  <div class="col-md-3 col-lg-3 col-xl-3"> <!-- item name-->
                     <p class="lead fw-normal mb-2" id="basket-item-name">Food item name</p>
-                    <p>
+                    <p> <!-- the item descriptions-->
                       <span class="text-muted" id="basket-filling-name">Filling : </span>huh
                       <span class="text-muted" id="basket-topping-name">Toppings :  </span>huh, huh, huh
                     </p>
                   </div>
-                  <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                  <div class="col-md-3 col-lg-3 col-xl-2 d-flex"> <!-- decrements the item total-->
                     <button
                       data-mdb-button-init
                       data-mdb-ripple-init
-                      class="btn btn-link px-2"
+                      class="btn btn-link px-2" 
                       onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                     >
                       <i class="fas fa-minus"></i>
@@ -74,11 +75,11 @@
                       id="form1"
                       min="0"
                       name="quantity"
-                      value="2"
+                      value="1"
                       type="number"
                       class="form-control form-control-sm"
                     />
-
+                      <!-- increments the item total-->
                     <button
                       data-mdb-button-init
                       data-mdb-ripple-init
@@ -108,13 +109,15 @@
                     id="form1"
                     class="form-control form-control-lg"
                   />
-                  <label class="form-label" for="form1">Discound code</label>
-                </div>
-                <button
+                  <label class="form-label" for="form1">Discount code</label>
+                </div> <!-- the method in onclick will take in the value of the text, and compare to valid codes -->
+                <button 
                   type="button"
+                  id="apply-button"
                   data-mdb-button-init
                   data-mdb-ripple-init
                   class="btn btn-outline-warning btn-lg ms-3"
+                  onclick=""
                 >
                   Apply
                 </button>

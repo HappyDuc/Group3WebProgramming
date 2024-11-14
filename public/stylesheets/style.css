@@ -31,6 +31,7 @@ body {
   font-family: "Oxygen", sans-serif !important;
   font-weight: 400 !important;
   font-style: normal;
+  padding-bottom: 50px;
 }
 
 body::before {
@@ -50,7 +51,9 @@ body::before {
 
 .menu-title,
 .customize-title {
-  color: aliceblue;
+  color: rgb(255, 255, 255);
+  text-decoration: underline;
+  text-decoration-color: aliceblue;
 }
 
 .zoneSeperator {
