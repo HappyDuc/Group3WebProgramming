@@ -81,15 +81,15 @@ function addToCart() {
 
   if (base === "Churros"){
     const churro = new Churro(4.95, base, idCounter);
-    basket.contents.push(JSON.stringify(churro.price + "+" + base + "+" + idCounter));
+    basket.contents.push(JSON.stringify(churro)); /// pushes item to basket []
   }
   else if (base === "Dip and Chip"){
     const dipChip = new DipChip(5.95,toppings, base, idCounter);
-    basket.contents.push(JSON.stringify(dipChip.price + "+" + toppings + "+" + base + "+" + idCounter));
+    basket.contents.push(JSON.stringify(dipChip)); /// pushes item to basket []
   }
   else{/// item is a main
     const mainItem = new MainItem(price, filling, toppings, base, idCounter);
-    basket.contents.push(JSON.stringify(mainItem.price + "+" + filling + "+" + toppings + "+" + base + "+" + idCounter));
+    basket.contents.push(JSON.stringify(mainItem)); /// pushes item to basket []
   }
   //sessionStorage.setItem(idCounter, JSON.stringify(foodItem));
   
