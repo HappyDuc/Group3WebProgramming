@@ -241,7 +241,7 @@ $(document).ready(function () {
   displayBasket();
 });
 
-//Database Input
+// Database Input
 // $(document).ready(function () {
 //   $("#searchBtn").click(function () {
 //     var orderID = $("#orderID").val(); // Get the order ID input value
