@@ -3,7 +3,6 @@ to do :
 Major task(s) : 
  
 have panels appear that show each individual item
-
     allow items to be deleted
 
 make a new page that takes in an order ID and allows option to add to cart if valid id
@@ -11,13 +10,6 @@ make a new page that takes in an order ID and allows option to add to cart if va
 
 
 QOL : 
-make price in summary adaptive
-
-correct prices for menu and items so they match up
-
-
-
-
 
 code BANANA 100% off at checkout
 
@@ -32,6 +24,10 @@ code BANANA 100% off at checkout
 
 onClick of add to cart, run javascript function to get all checked boxes for filling
 and toppings, create food item instance with all contents, stringify to session storage with
-incrementing id, reset all checkboxes and order summary. - done
+incrementing id, reset all checkboxes and order summary
 
+totalPrice calculated and displayed in basket
 
+correct prices in menu
+
+make price in summary adaptive

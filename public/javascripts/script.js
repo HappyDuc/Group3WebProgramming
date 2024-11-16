@@ -189,11 +189,14 @@ $(document).ready(function () {
       $(".fillings").hide();
       $(".toppings").show();
       $("#summary-filling").hide();
+      $("#summary-price").text("Price : 5.95");
+
       $(".summary").css("height", "auto");
     } else if (selectedBase === "Churros") {
       $(".fillings").hide();
       $(".toppings").hide();
       $("#summary-filling").hide();
+      $("#summary-price").text("Price : 4.95");
       $(".summary").css("height", "322px");
     } else {
       // Show the fillings section
