@@ -187,6 +187,8 @@ function addToCart() {
 function applyDiscount(inputCode) {
   /// incomplete
   if ((inputCode = "BANANA")) {
+    sessionStorage.setItem("totalPrice", (0.00).toFixed(2));
+    $("#total-price").text("£" + (0).toFixed(2));
   }
 }
 
