@@ -16,6 +16,7 @@ var indexRouter = require("./routes/index");
 var orderRouter = require("./routes/order");
 var paymentRouter = require("./routes/payment");
 var templateRouter = require("./routes/template");
+var orderLookupRouter = require("./routes/orderLookup");
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.use("/", indexRouter);
 app.use("/order", orderRouter);
 app.use("/payment", paymentRouter);
 app.use("/template", templateRouter);
+app.use("/orderLookup", orderLookupRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
