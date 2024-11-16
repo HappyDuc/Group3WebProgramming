@@ -44,19 +44,19 @@ class Basket { /// basket will just be an array of items
 
 
 function calcTotalPrice(){
-  let basket = JSON.parse(sessionStorage.getItem("basket"));
-  let baskContents = basket.contents;
+  let basket = JSON.parse(sessionStorage.getItem("basket")); /// get basket from storage
+  let baskContents = basket.contents; /// get itemArray
   
-  console.log("length is "+baskContents.length);
-  let totalPrice = 0;
-  for(let item in baskContents){
+  ///console.log("length is "+baskContents.length);
+  let totalPrice = 0; ///initial total price
+  for(let item in baskContents){ ///iterate through array
     
     let foodItem = baskContents[item];
     //console.log(item);
-    totalPrice += foodItem.price;
+    totalPrice += foodItem.price; /// add item price to total
   }
-  $("#total-price").text("Total Price : £ "+totalPrice.toFixed(2));
-  return totalPrice;
+  $("#total-price").text("Total Price : £ "+totalPrice.toFixed(2)); /// display total price to 2dp
+  return totalPrice; /// when using at checkout, and after discount code
 }
 
 
@@ -65,7 +65,7 @@ var idCounter = 0; /// initialise counter of foodItem ids
 
 function createBasket(){
   const basket = new Basket();
-  console.log("all done")
+  ///console.log("all done")
   sessionStorage.setItem("basket", JSON.stringify(basket))
   
 }
@@ -110,7 +110,7 @@ function addToCart() {
 }
 
 
-function applyDiscount(inputCode){
+function applyDiscount(inputCode){ /// incomplete
   if (inputCode = "BANANA"){
 
   }
@@ -189,14 +189,16 @@ $(document).ready(function () {
       $(".fillings").hide();
       $(".toppings").show();
       $("#summary-filling").hide();
-      $("#summary-price").text("Price : 5.95");
+      $("#summary-price").text("Price : 5.95"); /// update price
 
       $(".summary").css("height", "auto");
     } else if (selectedBase === "Churros") {
+      // Hide the fillings section
+      // Hide the toppings section
       $(".fillings").hide();
       $(".toppings").hide();
       $("#summary-filling").hide();
-      $("#summary-price").text("Price : 4.95");
+      $("#summary-price").text("Price : 4.95"); /// update price
       $(".summary").css("height", "322px");
     } else {
       // Show the fillings section
