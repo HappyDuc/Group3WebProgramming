@@ -98,7 +98,7 @@ function displayBasket() {
 //   }
 // }
 
-function calcTotalPrice() {
+function calcTotalPrice() { /// unused i believe, not going to remove just yet
   let basket = JSON.parse(sessionStorage.getItem("basket")); /// get basket from storage
   let baskContents = basket.contents; /// get itemArray
 
@@ -115,22 +115,27 @@ function calcTotalPrice() {
   return totalPrice; /// when using at checkout, and after discount code
 }
 
+function displayFinalPrice(){ /// make a method to show all of the item bases and fillings in the summary
+  let priceObj = sessionStorage.getItem("totalPrice");
+  price = parseFloat(priceObj);
+  console.log(typeof(price));
+  $("#final-price").text("Total price : £" + price);
+}
+
+
 // Updates the price on the basket page when an item quantity is changed.
 function updatePrice() {
   let total = 0;
   $(".basket-card").each(function () {
-
     //console.log("food item : "+$(".basket-card").text());
-    console.log(" number of"+ $(this).find(".form-control").val());
-    console.log(" price per : "+$(this).find("#basket-item-price").text().slice(1));
-
-
-
+    // console.log(" number of"+ $(this).find(".form-control").val());
+    // console.log(" price per : "+$(this).find("#basket-item-price").text().slice(1));
     total +=
-      $(this).find(".form-control").val() *
-      $(this).find("#basket-item-price").text().slice(1);
+      $(this).find(".form-control").val() * /// the number of copies of the item 
+      $(this).find("#basket-item-price").text().slice(1); /// the price per item
   });
   $("#total-price").text("£" + total.toFixed(2));
+  sessionStorage.setItem("totalPrice", total.toFixed(2));
 }
 
 var idCounter = 0; /// initialise counter of foodItem ids
@@ -139,10 +144,12 @@ function createBasket() {
   const basket = new Basket();
   ///console.log("all done")
   sessionStorage.setItem("basket", JSON.stringify(basket));
+  sessionStorage.setItem("totalPrice",0.00);
 }
 
 // Function will (hopefully) add a food item to session storage
 function addToCart() {
+  updatePrice(); /// update the price
   let basket = JSON.parse(sessionStorage.getItem("basket"));
   console.log(typeof basket);
 

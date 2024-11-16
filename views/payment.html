@@ -29,7 +29,7 @@
     />
   </head>
 
-  <body>
+  <body onload="displayFinalPrice()">
     <!-- Navbar -->
     <div class="template"></div>
 
@@ -86,8 +86,7 @@
             <div class="card-header" id="headingSummary">
               <h2 class="mb-0">
                 <div class="card-body">
-                  <h3 class="card-text">Summary of order</h3>
-                  <p class="card-text">Details about the order...</p>
+                  <p class="card-text" id="final-price">Total Price : </p>
                 </div>
               </h2>
             </div>
