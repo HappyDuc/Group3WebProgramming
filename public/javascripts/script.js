@@ -47,9 +47,8 @@ function displayBasket() {
   let basketItemCardTemplate = $(".basket-card").first().clone(true);
   $("#basketList").empty(); // Clear existing items in the basket list
 
-  // Retrieve basket data from session storage
   let basketData = JSON.parse(sessionStorage.getItem("basket"));
-  let basket = new Basket(); // Create new basket instance
+  let basket = new Basket();
 
   // Populate basket instance with stored data if available
   if (basketData !== null) {
@@ -60,7 +59,21 @@ function displayBasket() {
   // Loop through each item in basket and add to the display
   for (let item of basket.contents) {
     let newCard = basketItemCardTemplate.clone(true).removeAttr("hidden");
-    // Populate new card with item-specific details (assuming `item` has `name`, `price`, `quantity` fields)
+    let imageName = item.base.toLowerCase();
+    if (imageName === "dip and chip") {
+      imageName = "guacamole";
+    }
+    newCard
+      .find("#itemImage")
+      .attr("src", `/public/images/menuImages/${imageName}.jpg`);
+    newCard.find("#basket-item-name").text(item.base || "Unknown Item");
+    newCard
+      .find("#basket-filling-name")
+      .text("Filling: " + (item.filling || "Unknown filling") + "\n");
+    newCard
+      .find("#basket-topping-name")
+      .text("Topping(s): " + (item.toppings || "No toppings"));
+    newCard.find("#basket-item-price").text(`$${item.price || "0.00"}`);
     // Append the populated card to the basket list
     $("#basketList").append(newCard);
   }
@@ -100,6 +113,17 @@ function calcTotalPrice() {
   }
   $("#total-price").text("Total Price : £ " + totalPrice.toFixed(2)); /// display total price to 2dp
   return totalPrice; /// when using at checkout, and after discount code
+}
+
+// Updates the price on the basket page when an item quantity is changed.
+function updatePrice() {
+  let total = 0;
+  $(".basket-card").each(function () {
+    total +=
+      $(this).find(".form-control").val() *
+      $(this).find("#basket-item-price").text().slice(1);
+  });
+  $("#total-price").text("£" + total);
 }
 
 var idCounter = 0; /// initialise counter of foodItem ids
@@ -239,6 +263,8 @@ $(document).ready(function () {
   // Initial update for default selections
   updateSummary();
   displayBasket();
+
+  $(".form-control").change(updatePrice);
 });
 
 // Database Input
