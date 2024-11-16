@@ -45,14 +45,18 @@ class Basket { /// basket will just be an array of items
 
 function calcTotalPrice(){
   let basket = JSON.parse(sessionStorage.getItem("basket"));
-  baskContents = basket.contents;
+  let baskContents = basket.contents;
+  
   console.log("length is "+baskContents.length);
-  for(item in baskContents){
-    foodItem = baskContents[item]
-    console.log(foodItem);
+  let totalPrice = 0;
+  for(let item in baskContents){
     
+    let foodItem = baskContents[item];
+    //console.log(item);
+    totalPrice += foodItem.price;
   }
-  $("#total-price").text("Total Price : £ "+1000);
+  $("#total-price").text("Total Price : £ "+totalPrice.toFixed(2));
+  return totalPrice;
 }
 
 
@@ -83,15 +87,15 @@ function addToCart() {
 
   if (base === "Churros"){
     const churro = new Churro(4.95, base, idCounter);
-    basket.contents.push(JSON.stringify(churro)); /// pushes item to basket []
+    basket.contents.push(churro); /// pushes item to basket []
   }
   else if (base === "Dip and Chip"){
     const dipChip = new DipChip(5.95,toppings, base, idCounter);
-    basket.contents.push(JSON.stringify(dipChip)); /// pushes item to basket []
+    basket.contents.push(dipChip); /// pushes item to basket []
   }
   else{/// item is a main
     const mainItem = new MainItem(price, filling, toppings, base, idCounter);
-    basket.contents.push(JSON.stringify(mainItem)); /// pushes item to basket []
+    basket.contents.push(mainItem); /// pushes item to basket []
   }
   //sessionStorage.setItem(idCounter, JSON.stringify(foodItem));
   
@@ -104,6 +108,14 @@ function addToCart() {
   //console.log("addToCart ran");
 
 }
+
+
+function applyDiscount(inputCode){
+  if (inputCode = "BANANA"){
+
+  }
+}
+
 
 //resets the forms to unchecked after the item has been added, will occur after itemAdded
 function defaultForms(){

@@ -2,15 +2,11 @@ to do :
 
 Major task(s) : 
  
-have the basket show every ordered item when continuing to checkout.
-basket will be an array of objections containing the details of each order
-let basket = JSON.parse(sessionStorage.getItem("basket"));
-the array is basket.contents
-basekt.contents[0: ] should be how to access each element,
-from there. check base type to know what attributes to unpack
-have adaptive html panels that generate for each item.
-if that all works, just need to plug in the details to the panel.
+have panels appear that show each individual item
 
+    allow items to be deleted
+
+make a new page that takes in an order ID and allows option to add to cart if valid id
 
 
 
