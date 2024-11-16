@@ -51,7 +51,9 @@ function getItemsFromBasket(){
 }
 
 
-
+function calcTotalPrice(){
+  $("#total-price").text("Total Price : "+1000);
+}
 
 
 var idCounter = 0; /// initialise counter of foodItem ids 

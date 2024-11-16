@@ -1,6 +1,7 @@
 to do :
 
 Major task(s) : 
+ 
 have the basket show every ordered item when continuing to checkout.
 basket will be an array of objections containing the details of each order
 let basket = JSON.parse(sessionStorage.getItem("basket"));
