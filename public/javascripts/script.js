@@ -119,11 +119,18 @@ function calcTotalPrice() {
 function updatePrice() {
   let total = 0;
   $(".basket-card").each(function () {
+
+    //console.log("food item : "+$(".basket-card").text());
+    console.log(" number of"+ $(this).find(".form-control").val());
+    console.log(" price per : "+$(this).find("#basket-item-price").text().slice(1));
+
+
+
     total +=
       $(this).find(".form-control").val() *
       $(this).find("#basket-item-price").text().slice(1);
   });
-  $("#total-price").text("£" + total);
+  $("#total-price").text("£" + total.toFixed(2));
 }
 
 var idCounter = 0; /// initialise counter of foodItem ids
