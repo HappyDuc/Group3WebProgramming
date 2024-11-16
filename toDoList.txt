@@ -2,17 +2,23 @@ to do :
 
 Major task(s) : 
  
-have panels appear that show each individual item
-    allow items to be deleted
 
-make a new page that takes in an order ID and allows option to add to cart if valid id
+allow items to be deleted in basket. when no. items = 0, have a popup that asks to confirm.
+
+make a new page that takes in an order ID and allows option to add to cart if valid id - WIP
+
+make confirm payment button in payment, that leads to confirmation
+
+in confirmation, display ID, store order into data base
+
 
 
 
 QOL : 
 
-code BANANA 100% off at checkout
+Love Nacho Crunch
 
+back and forth arrow buttons to and from basket and order
 
 
 
@@ -21,6 +27,8 @@ code BANANA 100% off at checkout
 
 
 ----------------DONE ------
+
+have panels appear that show each individual item
 
 onClick of add to cart, run javascript function to get all checked boxes for filling
 and toppings, create food item instance with all contents, stringify to session storage with

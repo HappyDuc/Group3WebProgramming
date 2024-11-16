@@ -155,9 +155,16 @@ function addToCart() {
 
   const base = $("#summary-base").text(); /// this isnt quite right
   const filling = $('input[name="flexRadioDefault"]:checked').val();
-  const toppings = Array.from(
+  form-check-label
+
+  var toppings = Array.from(
     document.querySelectorAll('.toppings input[type="checkbox"]:checked') /// checkbox is type but radio is name???
   ).map((topping) => topping.id);
+
+  // if('.summary input[type="checkbox"]:checked'){ /// check for Love NachoCrunch
+  //   toppings.append("Extra Nacho Crunch");
+  // }
+
   const price = 9.95; /// this will change
 
   idCounter++;
