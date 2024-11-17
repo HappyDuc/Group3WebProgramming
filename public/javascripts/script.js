@@ -28,7 +28,7 @@ class Churro {
     this.price = price;
     this.base = base;
     this.id = id;
-    this.count = count;    
+    this.count = count;
   }
 }
 
@@ -69,15 +69,15 @@ function displayBasket() {
     newCard
       .find("#itemImage")
       .attr("src", `/public/images/menuImages/${imageName}.jpg`);
-    newCard.find("#basket-item-name").text("Item "+item.id+" : "+item.base || "Unknown Item"); /// displays item and its id
+    newCard
+      .find("#basket-item-name")
+      .text("Item " + item.id + " : " + item.base || "Unknown Item"); /// displays item and its id
     newCard
       .find("#basket-filling-name")
       .text("Filling: " + (item.filling || "Unknown filling") + "\n");
     newCard
       .find("#basket-topping-name")
       .text("Topping(s): " + (item.toppings || "No toppings"));
-
-
 
     newCard.find("#basket-item-price").text(`$${item.price || "0.00"}`);
     // Append the populated card to the basket list
@@ -136,14 +136,15 @@ function updatePrice() {
   let baskContents = basket.contents;
   let total = 0;
   $(".basket-card").each(function () {
-    let itemID = parseInt($(this).find("#basket-item-name").text().slice(5,6)); /// parse and slice the itemid
-    if(itemID === itemID){ /// the template card doesnt have an id, so will return NaN from line above, NaN will return false if compared to itself
-      console.log(" item id : "+itemID); 
+    let itemID = parseInt($(this).find("#basket-item-name").text().slice(5, 6)); /// parse and slice the itemid
+    if (itemID === itemID) {
+      /// the template card doesnt have an id, so will return NaN from line above, NaN will return false if compared to itself
+      console.log(" item id : " + itemID);
       let foodItem = baskContents[itemID - 1];
       foodItem.count = $(this).find(".form-control").val();
       //console.log(foodItem);
     }
-    
+
     total +=
       $(this).find(".form-control").val() * /// the number of copies of the item multiplied by
       $(this).find("#basket-item-price").text().slice(1); /// the price per item
@@ -184,14 +185,14 @@ function addToCart() {
   idCounter++;
 
   if (base === "Churros") {
-    const churro = new Churro(4.95, base, idCounter,1);
+    const churro = new Churro(4.95, base, idCounter, 1);
     basket.contents.push(churro); /// pushes item to basket []
   } else if (base === "Dip and Chip") {
-    const dipChip = new DipChip(5.95, toppings, base, idCounter,1);
+    const dipChip = new DipChip(5.95, toppings, base, idCounter, 1);
     basket.contents.push(dipChip); /// pushes item to basket []
   } else {
     /// item is a main
-    const mainItem = new MainItem(price, filling, toppings, base, idCounter,1);
+    const mainItem = new MainItem(price, filling, toppings, base, idCounter, 1);
     basket.contents.push(mainItem); /// pushes item to basket []
   }
   //sessionStorage.setItem(idCounter, JSON.stringify(foodItem));
