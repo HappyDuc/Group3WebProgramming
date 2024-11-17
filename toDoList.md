@@ -27,6 +27,8 @@
 
 - ~~make it so you cant add to cart without a base ~~
 
+- ~~Code BANANA for 100% off at checkout~~
+
 - ~~have panels appear that show each individual item~~
 
 - ~~onClick of add to cart, run javascript function to get all checked boxes for filling~~
