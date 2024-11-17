@@ -153,17 +153,20 @@ function updatePrice() {
   sessionStorage.setItem("basket", JSON.stringify(basket));
 }
 
-var idCounter = 0; /// initialise counter of foodItem ids
+
 
 function createBasket() {
   const basket = new Basket();
   ///console.log("all done")
   sessionStorage.setItem("basket", JSON.stringify(basket));
   sessionStorage.setItem("totalPrice", 0.0);
+  sessionStorage.setItem("totalItems", 0)
 }
 
 // Function will (hopefully) add a food item to session storage
 function addToCart() {
+  let idCounter = parseInt(sessionStorage.getItem("totalItems"));
+
   updatePrice(); /// update the price
   let basket = JSON.parse(sessionStorage.getItem("basket"));
   //console.log(typeof basket);
@@ -203,15 +206,17 @@ function addToCart() {
   defaultSummary();
   $("#checkout-button").text("Checkout to enjoy : " + idCounter + " Items");
   //console.log("addToCart ran");
+  sessionStorage.setItem("totalItems", idCounter);
 }
 
-function applyDiscount(inputCode) {
-  /// incomplete
-  if ((inputCode = "BANANA")) {
-    sessionStorage.setItem("totalPrice", (0.0).toFixed(2));
-    $("#total-price").text("£" + (0).toFixed(2));
-  }
-}
+// function applyDiscount() {
+//   /// incomplete
+// console.log($("#form1").val());
+//   if (($("#form1").val() == "BANANA")) {
+//     sessionStorage.setItem("totalPrice", (0.0).toFixed(2));
+//     $("#total-price").text("£" + (0).toFixed(2));
+//   }
+// }
 
 //resets the forms to unchecked after the item has been added, will occur after itemAdded
 function defaultForms() {

@@ -10,10 +10,11 @@
 
 - On confirmation, display ID, store order into data base
 
-- Have a count attribute for each fooditem, when it is initially made, it will be 1, update via increment and decrement arrows. display each item in basket with id, in form "Item : "+id. then slice the id and search basket,
-update count
+- make it so you cant add to cart without a base
 
 ## QOL :
+
+- when going back to the order from basket, show num of items instead of empty basket
 
 - Love Nacho Crunch
 
