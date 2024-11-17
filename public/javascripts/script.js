@@ -217,14 +217,14 @@ function addToCart() {
 }
 }
 
-// function applyDiscount() {
-//   /// incomplete
-// console.log($("#form1").val());
-//   if (($("#form1").val() == "BANANA")) {
-//     sessionStorage.setItem("totalPrice", (0.0).toFixed(2));
-//     $("#total-price").text("£" + (0).toFixed(2));
-//   }
-// }
+function applyDiscount() {
+//console.log(document.getElementById('discount-form').value );
+let inputCode = document.getElementById('discount-form').value; /// get the value of whatevers in the input form
+  if ((inputCode == "BANANA")) { /// no difference between ==  and === in this case
+    sessionStorage.setItem("totalPrice", (0.0).toFixed(2)); /// send updated price to session storage
+    $("#total-price").text("£" + (0).toFixed(2)); /// display updated price
+  }
+}
 
 //resets the forms to unchecked after the item has been added, will occur after itemAdded
 function defaultForms() {
