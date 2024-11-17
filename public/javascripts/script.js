@@ -255,6 +255,17 @@ function showCustomize() {
   });
 }
 
+
+function toggleCardDetails() {
+  if ($("#paymentCard").is(":checked")) {
+  $("#cardDetails").show();//Show card details section for card option
+  } else {
+  $("#cardDetails").hide();//Hide card details section for other options
+  }
+  }
+
+
+
 // Function updates the order summary section when customising an order
 $(document).ready(function () {
   let selectedBase = "";
@@ -315,6 +326,15 @@ $(document).ready(function () {
   displayBasket();
 
   $(".form-control").change(updatePrice);
+
+    toggleCardDetails();//check on page load
+    
+    $("input[name='paymentMethod']").on("change", toggleCardDetails); //add event listener to handle payment method change
+    
+      
+    $("#paymentConfirmation").show();    
+
+
 });
 
 // Database Input
