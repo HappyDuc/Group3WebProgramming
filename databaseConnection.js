@@ -1,61 +1,30 @@
-// Assuming you have an Express.js server
-const express = require('express');
-const mysql = require('mysql');
-const app = express();
-const port = 3000;
+const { createPool } = require('mysql');
 
-// Create a connection to the database
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'cy2025',
-    password: 'sbym?8YUCSBx6Q',
-    database: 'MENU_INFO',
-    port: 3000
+// Create a connection pool to the database
+const pool = createPool({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'menu_info',
 });
 
-// Connect to the database
-connection.connect((err) => {
-    if (err) {
-        console.error('Error connecting to the database:', err.stack);
-        return;
+// Test the connection
+pool.getConnection((err, connection) => {
+  if (err) {
+    console.error('Error connecting to MySQL:', err);
+    return;
+  }
+  console.log('Connected to MySQL as ID:', connection.threadId);
+  connection.release();
+});
+
+//Testing a query
+
+pool.query('select * from foodcontent', (err,result,fields)=>{
+    if(err){
+        return console.log(err);
     }
-    console.log('Successfully connected to the database');
-});
+    return console.log(result);
+})
 
-// Serve the static HTML page
-app.use(express.static('public'));
-
-// Parse JSON bodies
-app.use(express.json());
-
-// Route to handle the order ID lookup
-app.get('/lookupOrder', (req, res) => {
-    const orderID = req.query.orderID;  // Get orderID from query string
-
-    // Query the database
-    const query = `
-        SELECT b.orderID, b.Totalprice, f.foodName, f.fDescription, f.price 
-        FROM basket b
-        JOIN foodContent f ON b.orderID = f.orderID
-        WHERE b.orderID = ?
-    `;
-
-    connection.query(query, [orderID], (err, results) => {
-        if (err) {
-            console.error('Error querying the database:', err.stack);
-            res.status(500).send('Database query error');
-            return;
-        }
-
-        if (results.length > 0) {
-            res.json(results); // Return data to the frontend
-        } else {
-            res.json({ message: 'Order not found' }); // Return message if no results found
-        }
-    });
-});
-
-// Start the server
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+module.exports = pool;

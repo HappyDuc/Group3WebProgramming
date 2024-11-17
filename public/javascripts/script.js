@@ -1,31 +1,34 @@
 // Object decleration for a food item
 class MainItem {
-  constructor(price, filling, toppings, base, id) {
+  constructor(price, filling, toppings, base, id, count) {
     /// this is for the mains
     this.price = price;
     this.filling = filling;
     this.toppings = toppings;
     this.base = base;
     this.id = id;
+    this.count = count;
   }
 }
 
 class DipChip {
-  constructor(price, toppings, base, id) {
+  constructor(price, toppings, base, id, count) {
     /// this is for the dip and chip
     this.price = price;
     this.toppings = toppings;
     this.base = base;
     this.id = id;
+    this.count = count;
   }
 }
 
 class Churro {
-  constructor(price, base, id) {
+  constructor(price, base, id, count) {
     /// this is for the churros
     this.price = price;
     this.base = base;
     this.id = id;
+    this.count = count;
   }
 }
 
@@ -66,13 +69,16 @@ function displayBasket() {
     newCard
       .find("#itemImage")
       .attr("src", `/public/images/menuImages/${imageName}.jpg`);
-    newCard.find("#basket-item-name").text(item.base || "Unknown Item");
+    newCard
+      .find("#basket-item-name")
+      .text("Item " + item.id + " : " + item.base || "Unknown Item"); /// displays item and its id
     newCard
       .find("#basket-filling-name")
       .text("Filling: " + (item.filling || "Unknown filling") + "\n");
     newCard
       .find("#basket-topping-name")
       .text("Topping(s): " + (item.toppings || "No toppings"));
+
     newCard.find("#basket-item-price").text(`$${item.price || "0.00"}`);
     // Append the populated card to the basket list
     $("#basketList").append(newCard);
@@ -98,7 +104,8 @@ function displayBasket() {
 //   }
 // }
 
-function calcTotalPrice() { /// unused i believe, not going to remove just yet
+function calcTotalPrice() {
+  /// unused i believe, not going to remove just yet
   let basket = JSON.parse(sessionStorage.getItem("basket")); /// get basket from storage
   let baskContents = basket.contents; /// get itemArray
 
@@ -115,62 +122,86 @@ function calcTotalPrice() { /// unused i believe, not going to remove just yet
   return totalPrice; /// when using at checkout, and after discount code
 }
 
-function displayFinalPrice(){ /// make a method to show all of the item bases and fillings in the summary
+function displayFinalPrice() {
+  /// make a method to show all of the item bases and fillings in the summary
   let priceObj = sessionStorage.getItem("totalPrice");
   price = parseFloat(priceObj);
-  console.log(typeof(price));
-  $("#final-price").text("Total price : £" + price);
+  console.log(typeof price);
+  $("#final-price").text("Total price : £" + price.toFixed(2));
 }
-
 
 // Updates the price on the basket page when an item quantity is changed.
 function updatePrice() {
+  let basket = JSON.parse(sessionStorage.getItem("basket"));
+  let baskContents = basket.contents;
   let total = 0;
   $(".basket-card").each(function () {
-    //console.log("food item : "+$(".basket-card").text());
-    // console.log(" number of"+ $(this).find(".form-control").val());
-    // console.log(" price per : "+$(this).find("#basket-item-price").text().slice(1));
+    let itemID = parseInt($(this).find("#basket-item-name").text().slice(5, 6)); /// parse and slice the itemid
+    if (itemID === itemID) {
+      /// the template card doesnt have an id, so will return NaN from line above, NaN will return false if compared to itself
+      console.log(" item id : " + itemID);
+      let foodItem = baskContents[itemID - 1];
+      foodItem.count = parseInt($(this).find(".form-control").val());
+      //console.log($(this).find(".form-control").val());
+    }
+
     total +=
-      $(this).find(".form-control").val() * /// the number of copies of the item 
+      $(this).find(".form-control").val() * /// the number of copies of the item multiplied by
       $(this).find("#basket-item-price").text().slice(1); /// the price per item
   });
   $("#total-price").text("£" + total.toFixed(2));
   sessionStorage.setItem("totalPrice", total.toFixed(2));
+  sessionStorage.setItem("basket", JSON.stringify(basket));
 }
 
-var idCounter = 0; /// initialise counter of foodItem ids
+
 
 function createBasket() {
   const basket = new Basket();
   ///console.log("all done")
   sessionStorage.setItem("basket", JSON.stringify(basket));
-  sessionStorage.setItem("totalPrice",0.00);
+  sessionStorage.setItem("totalPrice", 0.0);
+  sessionStorage.setItem("totalItems", 0)
 }
 
 // Function will (hopefully) add a food item to session storage
 function addToCart() {
+
+  if($("#summary-base").text() === "Select Base"){
+    alert("You must select a base first!") /// have a popup window
+  }
+  else{
+
+  let idCounter = parseInt(sessionStorage.getItem("totalItems"));
+
   updatePrice(); /// update the price
   let basket = JSON.parse(sessionStorage.getItem("basket"));
-  console.log(typeof basket);
+  //console.log(typeof basket);
 
   const base = $("#summary-base").text(); /// this isnt quite right
   const filling = $('input[name="flexRadioDefault"]:checked').val();
-  const toppings = Array.from(
+
+  var toppings = Array.from(
     document.querySelectorAll('.toppings input[type="checkbox"]:checked') /// checkbox is type but radio is name???
   ).map((topping) => topping.id);
+
+  // if('.summary input[type="checkbox"]:checked'){ /// check for Love NachoCrunch
+  //   toppings.append("Extra Nacho Crunch");
+  // }
+
   const price = 9.95; /// this will change
 
   idCounter++;
 
   if (base === "Churros") {
-    const churro = new Churro(4.95, base, idCounter);
+    const churro = new Churro(4.95, base, idCounter, 1);
     basket.contents.push(churro); /// pushes item to basket []
   } else if (base === "Dip and Chip") {
-    const dipChip = new DipChip(5.95, toppings, base, idCounter);
+    const dipChip = new DipChip(5.95, toppings, base, idCounter, 1);
     basket.contents.push(dipChip); /// pushes item to basket []
   } else {
     /// item is a main
-    const mainItem = new MainItem(price, filling, toppings, base, idCounter);
+    const mainItem = new MainItem(price, filling, toppings, base, idCounter, 1);
     basket.contents.push(mainItem); /// pushes item to basket []
   }
   //sessionStorage.setItem(idCounter, JSON.stringify(foodItem));
@@ -182,11 +213,16 @@ function addToCart() {
   defaultSummary();
   $("#checkout-button").text("Checkout to enjoy : " + idCounter + " Items");
   //console.log("addToCart ran");
+  sessionStorage.setItem("totalItems", idCounter);
+}
 }
 
-function applyDiscount(inputCode) {
-  /// incomplete
-  if ((inputCode = "BANANA")) {
+function applyDiscount() {
+//console.log(document.getElementById('discount-form').value );
+let inputCode = document.getElementById('discount-form').value; /// get the value of whatevers in the input form
+  if ((inputCode == "BANANA")) { /// no difference between ==  and === in this case
+    sessionStorage.setItem("totalPrice", (0.0).toFixed(2)); /// send updated price to session storage
+    $("#total-price").text("£" + (0).toFixed(2)); /// display updated price
   }
 }
 
@@ -305,24 +341,3 @@ $(document).ready(function () {
 //     }
 //   });
 // });
-
-//function for cardPayment to put in card
-$(document).ready(function () {
-  
-function toggleCardDetails() {
-if ($("#paymentCard").is(":checked")) {
-$("#cardDetails").show();                                     //Show card details section for card option
-} else {
-$("#cardDetails").hide();                                     //Hide card details section for other options
-}
-}
-
-
-toggleCardDetails();                                              //check on page load
-
-
-$("input[name='paymentMethod']").on("change", toggleCardDetails); //add event listener to handle payment method change
-
-  
-$("#paymentConfirmation").show();                                 //show confirmation button for both options
-});

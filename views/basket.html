@@ -115,10 +115,11 @@
                 <div data-mdb-input-init class="form-outline flex-fill">
                   <input
                     type="text"
-                    id="form1"
+                    id="discount-form"
                     class="form-control form-control-lg"
                   />
-                  <label class="form-label" for="form1">Discound code</label> <!-- Discound-->
+                  <label class="form-label" for="form1">Discound code</label>
+                  <!-- Discound-->
                 </div>
                 <!-- the method in onclick will take in the value of the text, and compare to valid codes -->
                 <button
@@ -127,7 +128,7 @@
                   data-mdb-button-init
                   data-mdb-ripple-init
                   class="btn btn-outline-warning btn-lg ms-3"
-                  onclick="calcTotalPrice()"
+                  onclick="applyDiscount()"
                 >
                   Apply
                 </button>
@@ -146,9 +147,7 @@
                     Proceed to Pay
                   </button>
                 </a>
-                <a id="total-price" style="margin-left: 60%"
-                  >Total Price: £ 9.95</a
-                >
+                <a id="total-price" style="margin-left: 60%">Total Price: £</a>
               </div>
             </div>
           </div>
