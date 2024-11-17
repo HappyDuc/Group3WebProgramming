@@ -10,13 +10,16 @@
 
 - On confirmation, display ID, store order into data base
 
-- Have a count attribute for each fooditem, when it is initially made, it will be 1, update via increment and decrement arrows
+- Have a count attribute for each fooditem, when it is initially made, it will be 1, update via increment and decrement arrows. display each item in basket with id, in form "Item : "+id. then slice the id and search basket,
+update count
 
 ## QOL :
 
 - Love Nacho Crunch
 
 - back and forth arrow buttons to and from basket and order
+
+- select all button for toppings
 
 ## Done :
 
