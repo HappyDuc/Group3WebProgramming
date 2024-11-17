@@ -24,14 +24,14 @@
 
 ## Done :
 
-- have panels appear that show each individual item
+- ~~have panels appear that show each individual item~~
 
 - onClick of add to cart, run javascript function to get all checked boxes for filling
   and toppings, create food item instance with all contents, stringify to session storage with
   incrementing id, reset all checkboxes and order summary
 
-- totalPrice calculated and displayed in basket
+- ~~totalPrice calculated and displayed in basket~~
 
-- correct prices in menu
+- ~~correct prices in menu~~
 
-- make price in summary adaptive
+- ~~make price in summary adaptive~~
