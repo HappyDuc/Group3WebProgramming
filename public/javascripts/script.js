@@ -141,8 +141,8 @@ function updatePrice() {
       /// the template card doesnt have an id, so will return NaN from line above, NaN will return false if compared to itself
       console.log(" item id : " + itemID);
       let foodItem = baskContents[itemID - 1];
-      foodItem.count = $(this).find(".form-control").val();
-      //console.log(foodItem);
+      foodItem.count = parseInt($(this).find(".form-control").val());
+      //console.log($(this).find(".form-control").val());
     }
 
     total +=
