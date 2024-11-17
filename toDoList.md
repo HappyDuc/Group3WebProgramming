@@ -10,7 +10,6 @@
 
 - On confirmation, display ID, store order into data base
 
-- make it so you cant add to cart without a base
 
 ## QOL :
 
@@ -22,13 +21,17 @@
 
 - select all button for toppings
 
+- when no filling, make it display no filling, instead of unknown
+
 ## Done :
+
+- ~~make it so you cant add to cart without a base ~~
 
 - ~~have panels appear that show each individual item~~
 
-- onClick of add to cart, run javascript function to get all checked boxes for filling
-  and toppings, create food item instance with all contents, stringify to session storage with
-  incrementing id, reset all checkboxes and order summary
+- ~~onClick of add to cart, run javascript function to get all checked boxes for filling~~
+  ~~and toppings, create food item instance with all contents, stringify to session storage with~~
+  ~~incrementing id, reset all checkboxes and order summary~~
 
 - ~~totalPrice calculated and displayed in basket~~
 

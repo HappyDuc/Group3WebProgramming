@@ -166,6 +166,12 @@ function createBasket() {
 
 // Function will (hopefully) add a food item to session storage
 function addToCart() {
+
+  if($("#summary-base").text() === "Select Base"){
+    alert("You must select a base first!") /// have a popup window
+  }
+  else{
+
   let idCounter = parseInt(sessionStorage.getItem("totalItems"));
 
   updatePrice(); /// update the price
@@ -208,6 +214,7 @@ function addToCart() {
   $("#checkout-button").text("Checkout to enjoy : " + idCounter + " Items");
   //console.log("addToCart ran");
   sessionStorage.setItem("totalItems", idCounter);
+}
 }
 
 // function applyDiscount() {
