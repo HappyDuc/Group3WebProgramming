@@ -11,6 +11,8 @@ make confirm payment button in payment, that leads to confirmation
 
 in confirmation, display ID, store order into data base
 
+have a count attribute for each fooditem, when it is initially made, it will be 1, update via increment and decrement arrows
+
 
 
 
