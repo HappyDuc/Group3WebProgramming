@@ -1,31 +1,34 @@
 // Object decleration for a food item
 class MainItem {
-  constructor(price, filling, toppings, base, id) {
+  constructor(price, filling, toppings, base, id, count) {
     /// this is for the mains
     this.price = price;
     this.filling = filling;
     this.toppings = toppings;
     this.base = base;
     this.id = id;
+    this.count = count;
   }
 }
 
 class DipChip {
-  constructor(price, toppings, base, id) {
+  constructor(price, toppings, base, id, count) {
     /// this is for the dip and chip
     this.price = price;
     this.toppings = toppings;
     this.base = base;
     this.id = id;
+    this.count = count;
   }
 }
 
 class Churro {
-  constructor(price, base, id) {
+  constructor(price, base, id, count) {
     /// this is for the churros
     this.price = price;
     this.base = base;
     this.id = id;
+    this.count = count;    
   }
 }
 
@@ -155,7 +158,7 @@ function addToCart() {
 
   const base = $("#summary-base").text(); /// this isnt quite right
   const filling = $('input[name="flexRadioDefault"]:checked').val();
-  form-check-label
+  //form-check-label
 
   var toppings = Array.from(
     document.querySelectorAll('.toppings input[type="checkbox"]:checked') /// checkbox is type but radio is name???
@@ -170,14 +173,14 @@ function addToCart() {
   idCounter++;
 
   if (base === "Churros") {
-    const churro = new Churro(4.95, base, idCounter);
+    const churro = new Churro(4.95, base, idCounter,1);
     basket.contents.push(churro); /// pushes item to basket []
   } else if (base === "Dip and Chip") {
-    const dipChip = new DipChip(5.95, toppings, base, idCounter);
+    const dipChip = new DipChip(5.95, toppings, base, idCounter,1);
     basket.contents.push(dipChip); /// pushes item to basket []
   } else {
     /// item is a main
-    const mainItem = new MainItem(price, filling, toppings, base, idCounter);
+    const mainItem = new MainItem(price, filling, toppings, base, idCounter,1);
     basket.contents.push(mainItem); /// pushes item to basket []
   }
   //sessionStorage.setItem(idCounter, JSON.stringify(foodItem));
