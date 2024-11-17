@@ -316,3 +316,28 @@ $(document).ready(function () {
 
   $(".form-control").change(updatePrice);
 });
+
+// Database Input
+// $(document).ready(function () {
+//   $("#searchBtn").click(function () {
+//     var orderID = $("#orderID").val(); // Get the order ID input value
+
+//     if (orderID) {
+//       $.get(`/lookupOrder?orderID=${orderID}`, function (data) {
+//         // Display the result
+//         if (data.message) {
+//           $("#orderDetails").html(`<p>${data.message}</p>`);
+//         } else {
+//           var detailsHtml = "<ul>";
+//           data.forEach(function (item) {
+//             detailsHtml += `<li>Food Name: ${item.foodName}, Description: ${item.fDescription}, Price: $${item.price}</li>`;
+//           });
+//           detailsHtml += `</ul><p>Total Price: $${data[0].Totalprice}</p>`;
+//           $("#orderDetails").html(detailsHtml);
+//         }
+//       });
+//     } else {
+//       $("#orderDetails").html("<p>Please enter a valid Order ID.</p>");
+//     }
+//   });
+// });
