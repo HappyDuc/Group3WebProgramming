@@ -1,20 +1,31 @@
 -- Create the MENU_INFO database
---This File does nothing its just for storing our code for when we need to submit it.
 CREATE DATABASE MENU_INFO;
 
 -- Select the database
 USE MENU_INFO;
 
--- Create the foodContent table (assuming it doesn't exist yet)
-CREATE TABLE foodContent (
-    orderID INT IDENTITY(1,1), --Should automatically increment each ID by 1
-    foodName TEXT NOT NULL,
-    fDescription TEXT,
-    price FLOAT NOT NULL,
-    orderID INT,
-    itemCount int DEFAULT 1,
-    PRIMARY KEY (orderID),
+-- Create the MENU_INFO database
+CREATE DATABASE MENU_INFO;
+
+-- Select the database
+USE MENU_INFO;
+
+-- Create the orders table first
+CREATE TABLE orders (
+    orderID INT IDENTITY(1,1), -- Automatically increments the ID
+    customerName VARCHAR(255) NOT NULL, -- Name of the customer
+    orderDate DATETIME DEFAULT CURRENT_TIMESTAMP, -- Date when the order was placed
+    PRIMARY KEY (orderID) -- Unique identifier for each order
 );
 
-
-
+-- Create the foodContent table
+CREATE TABLE foodContent (
+    foodContentID INT IDENTITY(1,1), -- Automatically increments the ID
+    orderID INT NOT NULL, -- Links to the order this item belongs to
+    foodName TEXT NOT NULL, -- Name of the food item
+    fDescription TEXT, -- Description of the food item
+    price FLOAT NOT NULL, -- Price of the food item
+    itemCount INT DEFAULT 1, -- Quantity of the item ordered
+    PRIMARY KEY (foodContentID), -- Unique identifier for each item
+    FOREIGN KEY (orderID) REFERENCES orders(orderID) ON DELETE CASCADE -- Links to the orders table
+);

@@ -57,46 +57,61 @@
       crossorigin="anonymous"
     ></script>
     <script>
-      $(document).ready(function () {
-  $('#searchBtn').on('click', function () {
-    const orderId = $('#orderID').val();
+  $(document).ready(function () {
+    $('#searchBtn').on('click', function () {
+      const orderId = $('#orderID').val();
 
-    if (!orderId) {
-      $('#orderDetails').html('<div class="alert alert-danger">Please enter an Order ID</div>');
-      return;
-    }
-
-    console.log("Searching for order ID:", orderId); // log the order ID
-
-    // Make AJAX request to the backend
-    $.ajax({
-      url: `/orderLookup/${orderId}`,
-      method: 'GET',
-      success: function (data) {
-        console.log("Received data:", data); // log the response
-
-        // Display order details
-        $('#orderDetails').html(`
-          <div class="alert alert-success">
-            <strong>Order Found:</strong><br>
-            ID: ${data.id}<br>
-            Name: ${data.name}<br>
-            Description: ${data.description}<br>
-            Item Count: ${data.itemCount}
-          </div>
-        `);
-      },
-      error: function (xhr) {
-        console.log("Error response:", xhr); // log the error response
-        if (xhr.status === 404) {
-          $('#orderDetails').html('<div class="alert alert-warning">Order not found</div>');
-        } else {
-          $('#orderDetails').html('<div class="alert alert-danger">An error occurred</div>');
-        }
+      if (!orderId) {
+        $('#orderDetails').html('<div class="alert alert-danger">Please enter an Order ID</div>');
+        return;
       }
+
+      console.log("Searching for order ID:", orderId); // Log the order ID
+
+      // Make AJAX request to the backend
+      $.ajax({
+        url: `/orderLookup/${orderId}`,
+        method: 'GET',
+        success: function (data) {
+          console.log("Received data:", data); // Log the response
+
+          // Check if data contains multiple items
+          let orderDetailsHtml = `
+            <div class="alert alert-success">
+              <strong>Order Found:</strong><br>
+              Order ID: ${data[0].orderID}<br>
+              Items:
+              <ul>
+          `;
+
+          // Loop through each item and add it to the HTML
+          data.forEach(item => {
+            orderDetailsHtml += `
+              <li>
+                <strong>Name:</strong> ${item.foodName}<br>
+                <strong>Description:</strong> ${item.fDescription || 'N/A'}<br>
+                <strong>Price:</strong> £${item.price.toFixed(2)}<br>
+                <strong>Item Count:</strong> ${item.itemCount}
+              </li><br>
+            `;
+          });
+
+          orderDetailsHtml += '</ul></div>';
+
+          // Display the order details
+          $('#orderDetails').html(orderDetailsHtml);
+        },
+        error: function (xhr) {
+          console.log("Error response:", xhr); // Log the error response
+          if (xhr.status === 404) {
+            $('#orderDetails').html('<div class="alert alert-warning">Order not found</div>');
+          } else {
+            $('#orderDetails').html('<div class="alert alert-danger">An error occurred</div>');
+          }
+        }
+      });
     });
   });
-});
-    </script>
+</script>   
   </body>
 </html>
