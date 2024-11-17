@@ -305,3 +305,24 @@ $(document).ready(function () {
 //     }
 //   });
 // });
+
+//function for cardPayment to put in card
+$(document).ready(function () {
+  
+function toggleCardDetails() {
+if ($("#paymentCard").is(":checked")) {
+$("#cardDetails").show();                                     //Show card details section for card option
+} else {
+$("#cardDetails").hide();                                     //Hide card details section for other options
+}
+}
+
+
+toggleCardDetails();                                              //check on page load
+
+
+$("input[name='paymentMethod']").on("change", toggleCardDetails); //add event listener to handle payment method change
+
+  
+$("#paymentConfirmation").show();                                 //show confirmation button for both options
+});
