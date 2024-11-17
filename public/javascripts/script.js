@@ -98,7 +98,8 @@ function displayBasket() {
 //   }
 // }
 
-function calcTotalPrice() { /// unused i believe, not going to remove just yet
+function calcTotalPrice() {
+  /// unused i believe, not going to remove just yet
   let basket = JSON.parse(sessionStorage.getItem("basket")); /// get basket from storage
   let baskContents = basket.contents; /// get itemArray
 
@@ -115,13 +116,13 @@ function calcTotalPrice() { /// unused i believe, not going to remove just yet
   return totalPrice; /// when using at checkout, and after discount code
 }
 
-function displayFinalPrice(){ /// make a method to show all of the item bases and fillings in the summary
+function displayFinalPrice() {
+  /// make a method to show all of the item bases and fillings in the summary
   let priceObj = sessionStorage.getItem("totalPrice");
   price = parseFloat(priceObj);
-  console.log(typeof(price));
+  console.log(typeof price);
   $("#final-price").text("Total price : £" + price);
 }
-
 
 // Updates the price on the basket page when an item quantity is changed.
 function updatePrice() {
@@ -131,7 +132,7 @@ function updatePrice() {
     // console.log(" number of"+ $(this).find(".form-control").val());
     // console.log(" price per : "+$(this).find("#basket-item-price").text().slice(1));
     total +=
-      $(this).find(".form-control").val() * /// the number of copies of the item 
+      $(this).find(".form-control").val() * /// the number of copies of the item
       $(this).find("#basket-item-price").text().slice(1); /// the price per item
   });
   $("#total-price").text("£" + total.toFixed(2));
@@ -144,7 +145,7 @@ function createBasket() {
   const basket = new Basket();
   ///console.log("all done")
   sessionStorage.setItem("basket", JSON.stringify(basket));
-  sessionStorage.setItem("totalPrice",0.00);
+  sessionStorage.setItem("totalPrice", 0.0);
 }
 
 // Function will (hopefully) add a food item to session storage
@@ -155,7 +156,6 @@ function addToCart() {
 
   const base = $("#summary-base").text(); /// this isnt quite right
   const filling = $('input[name="flexRadioDefault"]:checked').val();
-  form-check-label
 
   var toppings = Array.from(
     document.querySelectorAll('.toppings input[type="checkbox"]:checked') /// checkbox is type but radio is name???
@@ -194,7 +194,7 @@ function addToCart() {
 function applyDiscount(inputCode) {
   /// incomplete
   if ((inputCode = "BANANA")) {
-    sessionStorage.setItem("totalPrice", (0.00).toFixed(2));
+    sessionStorage.setItem("totalPrice", (0.0).toFixed(2));
     $("#total-price").text("£" + (0).toFixed(2));
   }
 }
