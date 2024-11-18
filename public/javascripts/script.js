@@ -126,7 +126,7 @@ function displayFinalPrice() {
   /// make a method to show all of the item bases and fillings in the summary
   let priceObj = sessionStorage.getItem("totalPrice");
   price = parseFloat(priceObj);
-  console.log(typeof price);
+  //console.log(typeof price);
   $("#final-price").text("Total price : £" + price.toFixed(2));
 }
 
@@ -149,7 +149,7 @@ function updatePrice() {
       $(this).find(".form-control").val() * /// the number of copies of the item multiplied by
       $(this).find("#basket-item-price").text().slice(1); /// the price per item
   });
-  $("#total-price").text("£" + total.toFixed(2));
+  $("#total-price").text("Total Price : £" + total.toFixed(2));
   sessionStorage.setItem("totalPrice", total.toFixed(2));
   sessionStorage.setItem("basket", JSON.stringify(basket));
 }
