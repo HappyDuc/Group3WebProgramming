@@ -224,11 +224,6 @@ function addToCart() {
 }
 }
 
-function checkValidFilling(){
-
-
-
-};
 
 function applyDiscount() {
 //console.log(document.getElementById('discount-form').value );
