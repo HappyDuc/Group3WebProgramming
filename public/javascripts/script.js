@@ -306,7 +306,7 @@ $(document).ready(function () {
       $(".fillings").hide();
       $(".toppings").show();
       $("#summary-filling").hide();
-      $("#summary-price").text("Price : £ 5.95"); /// update price
+      $("#summary-price").text("Price : £5.95"); /// update price
 
       $(".summary").css("height", "auto");
     } else if (selectedBase === "Churros") {
@@ -315,7 +315,7 @@ $(document).ready(function () {
       $(".fillings").hide();
       $(".toppings").hide();
       $("#summary-filling").hide();
-      $("#summary-price").text("Price : £ 4.95"); /// update price
+      $("#summary-price").text("Price : £4.95"); /// update price
       $(".summary").css("height", "322px");
     } else {
       // Show the fillings section
@@ -323,7 +323,7 @@ $(document).ready(function () {
       $(".fillings").show();
       $("#summary-filling").show();
       $(".summary").css("height", "auto");
-      $("#summary-price").text("Price : £ 9.95");
+      $("#summary-price").text("Price : £9.95");
     }
 
     updateSummary();
@@ -369,3 +369,7 @@ $(document).ready(function () {
 //     }
 //   });
 // });
+
+function goBack() {
+  window.history.back();
+}
