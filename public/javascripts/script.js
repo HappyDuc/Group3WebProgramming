@@ -316,7 +316,7 @@ $(document).ready(function () {
       $(".fillings").hide();
       $(".toppings").show();
       $("#summary-filling").hide();
-      $("#summary-price").text("Price : £ 5.95"); /// update price
+      $("#summary-price").text("Price : £5.95"); /// update price
 
       $(".summary").css("height", "auto");
     } else if (selectedBase === "Churros") {
@@ -325,7 +325,7 @@ $(document).ready(function () {
       $(".fillings").hide();
       $(".toppings").hide();
       $("#summary-filling").hide();
-      $("#summary-price").text("Price : £ 4.95"); /// update price
+      $("#summary-price").text("Price : £4.95"); /// update price
       $(".summary").css("height", "322px");
     } else {
       // Show the fillings section
@@ -333,7 +333,7 @@ $(document).ready(function () {
       $(".fillings").show();
       $("#summary-filling").show();
       $(".summary").css("height", "auto");
-      $("#summary-price").text("Price : £ 9.95");
+      $("#summary-price").text("Price : £9.95");
     }
 
     updateSummary();
@@ -379,3 +379,38 @@ $(document).ready(function () {
 //     }
 //   });
 // });
+
+function goBack() {
+  window.history.back();
+}
+
+
+function selectAll() {
+  let checkbox1 = document.getElementById("cheese");
+  checkbox1.checked = !checkbox1.checked;
+  
+  let checkbox2 = document.getElementById("guacamole");
+  checkbox2.checked = !checkbox2.checked;
+  
+  let checkbox3 = document.getElementById("salsa");
+  checkbox3.checked = !checkbox3.checked;
+
+  let checkbox4 = document.getElementById("lettuce");
+  checkbox4.checked = !checkbox4.checked;
+
+  let checkbox5 = document.getElementById("picodegallo");
+  checkbox5.checked = !checkbox5.checked;
+
+  let checkbox6 = document.getElementById("bbq");
+  checkbox6.checked = !checkbox6.checked;
+
+  let checkbox7 = document.getElementById("nacho-crunch");
+  checkbox7.checked = !checkbox7.checked;
+
+  let checkbox8 = document.getElementById("rainbow-slaw");
+  checkbox8.checked = !checkbox8.checked;
+
+  let checkbox9 = document.getElementById("sour-cream");
+  checkbox9.checked = !checkbox9.checked;
+
+}

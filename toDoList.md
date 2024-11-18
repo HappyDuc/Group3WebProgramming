@@ -4,13 +4,7 @@
 
 - allow items to be deleted in basket. when no. items = 0, have a popup that asks to confirm.
 
-- make a new page that takes in an order ID and allows option to add to cart if valid id - WIP
-
 - On confirmation, display ID, store order into data base, display text showing time to pickup/delivery
-
-- back and forth arrow buttons to and from basket and order
-
-- input validation on card details
 
 - input parsing for SQL injections perchance
 
@@ -27,8 +21,13 @@
 
 - when no filling, make it display no filling, instead of unknown in basket
 
-
 ## Done :
+
+- ~~input validation on card details~~
+
+- ~~back and forth arrow buttons to and from basket and order~~
+
+- ~~make a new page that takes in an order ID and allows option to add to cart if valid id - WIP~~
 
 - ~~make it so you cant add to cart without a base ~~
 
