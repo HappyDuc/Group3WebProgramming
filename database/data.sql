@@ -4,12 +4,6 @@ CREATE DATABASE MENU_INFO;
 -- Select the database
 USE MENU_INFO;
 
--- Create the MENU_INFO database
-CREATE DATABASE MENU_INFO;
-
--- Select the database
-USE MENU_INFO;
-
 -- Create the orders table first
 CREATE TABLE orders (
     orderID INT IDENTITY(1,1), -- Automatically increments the ID
