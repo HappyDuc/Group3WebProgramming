@@ -185,7 +185,7 @@ function addToCart() {
   let basket = JSON.parse(sessionStorage.getItem("basket"));
   //console.log(typeof basket);
 
-  const base = $("#summary-base").text(); /// this isnt quite right
+  const base = $("#summary-base").text();
   const filling = $('input[name="flexRadioDefault"]:checked').val();
 
   var toppings = Array.from(
@@ -224,12 +224,22 @@ function addToCart() {
 }
 }
 
+function checkValidFilling(){
+
+
+
+};
+
 function applyDiscount() {
 //console.log(document.getElementById('discount-form').value );
 let inputCode = document.getElementById('discount-form').value; /// get the value of whatevers in the input form
   if ((inputCode == "BANANA")) { /// no difference between ==  and === in this case
     sessionStorage.setItem("totalPrice", (0.0).toFixed(2)); /// send updated price to session storage
-    $("#total-price").text("£" + (0).toFixed(2)); /// display updated price
+    $("#total-price").text("Total Price : £" + (0).toFixed(2)); /// display updated price
+  }
+  else if ((inputCode == "SRIMP")) { /// no difference between ==  and === in this case
+    sessionStorage.setItem("totalPrice", (6).toFixed(2)); /// send updated price to session storage
+    $("#total-price").text("Total Price : $" + (6).toFixed(2)); /// display updated price
   }
 }
 

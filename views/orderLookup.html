@@ -47,6 +47,11 @@
         <button id="searchBtn" type="submit" class="btn btn-primary mt-3">
           Search
         </button>
+        <!---- <a href="/basket"> -->
+        <button id="lookup-add"  type="submit" class="btn btn-primary mt-3">
+          Order Again!
+        </button>
+        
         <div id="orderDetails" class="mt-3"></div>
       </div>
     </div>
@@ -84,7 +89,7 @@
               <ul>
           `;
 
-          // Loop through each item and add it to the HTML
+          // Loop through each item and add it to the HTML, will also add to session storage here
           data.forEach(item => {
             orderDetailsHtml += `
               <li>
@@ -94,12 +99,90 @@
                 <strong>Item Count:</strong> ${item.itemCount}
               </li><br>
             `;
+            
+            let idCounter = parseInt(sessionStorage.getItem("totalItems")); /// get the id
+            idCounter++ /// increment id counter
+            
+
+            /// edge cases to check:
+            /* 
+            no filling, yes toppings
+            no toppings or filling
+            no toppings, yes filling
+
+            invalid toppings or fillings
+
+
+            */
+            descString = String(item.fDescription);
+            let descArr = descString.split(', ')
+
+            let validFillings = ["Chicken","Jackfruit","Pork","Haggis","Beef","Vegan Haggis","Shrimp","Lamb","Horse"]; /// valid fillings
+            let validToppings = ["Cheese","Guacamole","Salsa","Lettuce","Pico de gallo","BBQ","Nacho Crunch","Rainbow Slaw","Sour Cream"]; /// valid toppings
+
+            let checkFilling = descArr[0];
+            let price = item.price
+            let base = item.foodName;
+            let count = item.itemCount;
+            /*
+            check the base first
+
+
+
+
+            */
+
+
+
+
+            if (descArr.length > 0){ /// item has fillings and/or toppings
+            // console.log("count"+item.itemCount);
+            // console.log("price"+item.price);
+            // console.log("id "+(idCounter));
+            //console.log("base"+item.foodName);
+            //console.log("desc"+item.fDescription);
+              console.log("item has items"+descArr.length)
+
+
+
+              if(validFillings.includes(checkFilling) ){ /// item has a filling
+                console.log("filling "+checkFilling);
+                console.log("toppings : "+descArr.slice(1));
+
+
+
+                //const foodItem = new Churro(4.95, base, idCounter, 1);
+                //const mainItem = new MainItem(price, filling, toppings, base, idCounter, 1);
+
+              }
+              else if(validToppings.includes(checkFilling)){/// item does not have a filling, but it is a valid topping
+                console.log("topping "+checkFilling);
+              }
+              else{
+                console.log("invalid input");
+                alert("invalid input");
+              }
+            }
+            else{
+              console.log("empty item")
+            }
+
+
+            
+            sessionStorage.setItem("totalItems", idCounter); /// return the id
+
+            
+
+
           });
 
-          orderDetailsHtml += '</ul></div>';
+         
 
           // Display the order details
+          
+          orderDetailsHtml += '</ul></div>';
           $('#orderDetails').html(orderDetailsHtml);
+          
         },
         error: function (xhr) {
           console.log("Error response:", xhr); // Log the error response
