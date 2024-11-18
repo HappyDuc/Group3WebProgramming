@@ -374,33 +374,16 @@ function goBack() {
   window.history.back();
 }
 
-
+let checker = false
 function selectAll() {
-  let checkbox1 = document.getElementById("cheese");
-  checkbox1.checked = !checkbox1.checked;
-  
-  let checkbox2 = document.getElementById("guacamole");
-  checkbox2.checked = !checkbox2.checked;
-  
-  let checkbox3 = document.getElementById("salsa");
-  checkbox3.checked = !checkbox3.checked;
-
-  let checkbox4 = document.getElementById("lettuce");
-  checkbox4.checked = !checkbox4.checked;
-
-  let checkbox5 = document.getElementById("picodegallo");
-  checkbox5.checked = !checkbox5.checked;
-
-  let checkbox6 = document.getElementById("bbq");
-  checkbox6.checked = !checkbox6.checked;
-
-  let checkbox7 = document.getElementById("nacho-crunch");
-  checkbox7.checked = !checkbox7.checked;
-
-  let checkbox8 = document.getElementById("rainbow-slaw");
-  checkbox8.checked = !checkbox8.checked;
-
-  let checkbox9 = document.getElementById("sour-cream");
-  checkbox9.checked = !checkbox9.checked;
-
+  let checkboxes = document.querySelectorAll('.toppings input[type="checkbox"]:not(:checked)');
+  let checkboxesChecked = document.querySelectorAll('.toppings input[type="checkbox"]:checked');
+  if (checker == false){
+    checkboxes.forEach(checkbox => checkbox.checked = true);
+    checker = true
+  }
+  if(checker == true){
+    checkboxesChecked.forEach(checkbox => checkbox.checked = false);
+    checker = false
+  }
 }
