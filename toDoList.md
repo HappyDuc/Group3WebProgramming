@@ -15,13 +15,11 @@
 
 - when going back to the order from basket, show num of items instead of empty basket
 
-- Love Nacho Crunch
-
-- select all button for toppings
-
 - when no filling, make it display no filling, instead of unknown in basket
 
 ## Done :
+
+- ~~- select all button for toppings~~
 
 - ~~input validation on card details~~
 
