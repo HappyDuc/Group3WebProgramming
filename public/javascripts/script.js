@@ -79,7 +79,7 @@ function displayBasket() {
       .find("#basket-topping-name")
       .text("Topping(s): " + (item.toppings || "No toppings"));
 
-    newCard.find("#basket-item-price").text(`$${item.price || "0.00"}`);
+    newCard.find("#basket-item-price").text(`£${item.price || "0.00"}`);
     // Append the populated card to the basket list
     $("#basketList").append(newCard);
   }
