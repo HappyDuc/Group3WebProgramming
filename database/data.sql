@@ -34,7 +34,7 @@ INSERT INTO orders (orderDate) VALUES
 -- Insert items for John's order (orderID = 1)
 INSERT INTO foodContent (orderID, foodName, fDescription, price, itemCount) VALUES
 (1, 'Burrito', 'Chicken, Cheese, Salsa', 9.95, 1), -- John ordered 2 burritos
-(1, 'Taco', 'Beef, Lettuce, Salsa', 9.95, 1); -- John ordered 3 tacos
+(1, 'Tacos', 'Beef, Lettuce, Salsa', 9.95, 1); -- John ordered 3 tacos
 
 -- Insert items for Jane's order (orderID = 2)
 INSERT INTO foodContent (orderID, foodName, fDescription, price, itemCount) VALUES

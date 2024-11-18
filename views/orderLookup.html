@@ -47,6 +47,12 @@
         <button id="searchBtn" type="submit" class="btn btn-primary mt-3">
           Search
         </button>
+        <a href="/basket"> 
+        <button id="lookup-add"  type="submit" class="btn btn-primary mt-3">
+          Order Again!
+        </button>
+      </a>
+        
         <div id="orderDetails" class="mt-3"></div>
       </div>
     </div>
@@ -84,7 +90,7 @@
               <ul>
           `;
 
-          // Loop through each item and add it to the HTML
+          // Loop through each item and add it to the HTML, will also add to session storage here
           data.forEach(item => {
             orderDetailsHtml += `
               <li>
@@ -94,12 +100,89 @@
                 <strong>Item Count:</strong> ${item.itemCount}
               </li><br>
             `;
+            let basket = JSON.parse(sessionStorage.getItem("basket"));
+            let idCounter = parseInt(sessionStorage.getItem("totalItems")); /// get the id
+            idCounter++ /// increment id counter
+            
+
+            /// edge cases to check:
+            /* 
+            no filling, yes toppings
+            no toppings or filling
+            no toppings, yes filling
+
+            invalid toppings or fillings
+
+
+            */
+            descString = String(item.fDescription);
+            let descArr = descString.split(', ')
+
+            let validFillings = ["","Chicken","Jackfruit","Pork","Haggis","Beef","Vegan Haggis","Shrimp","Lamb","Horse"]; /// valid fillings
+            let validToppings = ["Cheese","Guacamole","Salsa","Lettuce","Pico de gallo","BBQ","Nacho Crunch","Rainbow Slaw","Sour Cream"]; /// valid toppings
+
+            let price = item.price;
+            let base = item.foodName;
+            let count = item.itemCount;
+            /*
+            check the base first
+
+            if main item, check if there is a filling, then make item and send to session storage
+
+
+
+
+            */
+           if (base ==="Churros") { /// made be churro??
+            const churro = new Churro(price, base, idCounter, 1);
+            basket.contents.push(churro); /// pushes item to basket []
+           }
+           else if(base === "Dip and Chip"){/// this may have toppings
+            if (descArr.length > 0){ /// yes toppings
+              const dipChip = new DipChip(price, descArr, base, idCounter, 1);
+              basket.contents.push(dipChip); /// pushes item to basket []
+            }
+            else{
+              const dipChip = new DipChip(price,[""] ,base, idCounter, 1);
+              basket.contents.push(dipChip); /// pushes item to basket []
+            }
+           }
+           else{
+            if (descArr.length > 0){ /// item has fillings and/or toppings
+              let checkFilling = descArr[0];
+              if(validFillings.includes(checkFilling) ){ /// item has a filling
+                if(descArr.length > 1){/// item also has toppings
+                  let toppings = descArr.slice(1);/// slice toppings
+                  const mainItem = new MainItem(price, checkFilling, toppings, base, idCounter, 1);
+                  basket.contents.push(mainItem);
+                }
+                else{ /// item doesnt have fillings
+                  const mainItem = new MainItem(price, checkFilling,[""], base, idCounter, 1);
+                  basket.contents.push(mainItem);
+                }
+              }
+              else{/// item doesnt have a filling
+                const mainItem = new MainItem(price,"",descArr, base, idCounter, 1);
+                basket.contents.push(mainItem);
+              }
+            }
+            else{/// item has no toppings or fillings
+              const mainItem = new MainItem(price, "", [""], base, idCounter, 1);
+              basket.contents.push(mainItem);
+           }
+            
+          }
+          sessionStorage.setItem("totalItems", idCounter); /// return the id
+          sessionStorage.setItem("basket", JSON.stringify(basket)); /// return the id
           });
 
-          orderDetailsHtml += '</ul></div>';
+         
 
           // Display the order details
+          
+          orderDetailsHtml += '</ul></div>';
           $('#orderDetails').html(orderDetailsHtml);
+          
         },
         error: function (xhr) {
           console.log("Error response:", xhr); // Log the error response
