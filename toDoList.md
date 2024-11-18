@@ -8,6 +8,9 @@
 
 - input parsing for SQL injections perchance
 
+- get largest order id on order start from database. then increment and display as order id
+
+
 ## QOL :
 
 - when going back to the order from basket, show num of items instead of empty basket
