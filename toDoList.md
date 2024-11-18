@@ -12,6 +12,8 @@
 
 - input validation on card details
 
+- input parsing for SQL injections perchance
+
 
 ## QOL :
 
