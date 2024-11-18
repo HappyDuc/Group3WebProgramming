@@ -6,11 +6,11 @@
 
 - make a new page that takes in an order ID and allows option to add to cart if valid id - WIP
 
-- ~~make confirm payment button in payment,~~ that leads to confirmation - WIP
-
 - On confirmation, display ID, store order into data base, display text showing time to pickup/delivery
 
 - back and forth arrow buttons to and from basket and order
+
+- input validation on card details
 
 
 ## QOL :
@@ -41,3 +41,5 @@
 - ~~correct prices in menu~~
 
 - ~~make price in summary adaptive~~
+
+- ~~make confirm payment button in payment, that leads to confirmation~~
