@@ -104,6 +104,13 @@ function displayBasket() {
 //   }
 // }
 
+function timeToReady(){
+  var wait = Math.floor((Math.random() * 16) + 13); /// between 13 and 28
+  $("#wait-time").text("Ready to eat in : "+wait+" minutes!");
+}
+
+
+
 function calcTotalPrice() {
   /// unused i believe, not going to remove just yet
   let basket = JSON.parse(sessionStorage.getItem("basket")); /// get basket from storage
