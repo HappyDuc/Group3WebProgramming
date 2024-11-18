@@ -384,16 +384,18 @@ function goBack() {
   window.history.back();
 }
 
-let checker = false
+let checker = false; // Declare checker globally
 function selectAll() {
   let checkboxes = document.querySelectorAll('.toppings input[type="checkbox"]:not(:checked)');
   let checkboxesChecked = document.querySelectorAll('.toppings input[type="checkbox"]:checked');
-  if (checker == false){
+  let button = document.getElementById('select-all-button');
+  if (checker == false) {
     checkboxes.forEach(checkbox => checkbox.checked = true);
-    checker = true
-  }
-  if(checker == true){
+    button.textContent = "Unselect All";
+    checker = true; // Update global checker
+  } else {
     checkboxesChecked.forEach(checkbox => checkbox.checked = false);
-    checker = false
+    button.textContent = "Select All";
+    checker = false; // Update global checker
   }
 }
