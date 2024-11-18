@@ -6,9 +6,11 @@
 
 - make a new page that takes in an order ID and allows option to add to cart if valid id - WIP
 
-- make confirm payment button in payment, that leads to confirmation
+- ~~make confirm payment button in payment,~~ that leads to confirmation - WIP
 
-- On confirmation, display ID, store order into data base
+- On confirmation, display ID, store order into data base, display text showing time to pickup/delivery
+
+- back and forth arrow buttons to and from basket and order
 
 
 ## QOL :
@@ -17,11 +19,10 @@
 
 - Love Nacho Crunch
 
-- back and forth arrow buttons to and from basket and order
-
 - select all button for toppings
 
-- when no filling, make it display no filling, instead of unknown
+- when no filling, make it display no filling, instead of unknown in basket
+
 
 ## Done :
 
