@@ -82,27 +82,42 @@
                   </div>
 
                   <!-- Card Details Section -->
+                   <!-- Card Number-->
                   <div id="cardDetails" style="display: none; margin-top: 20px;">
                     <h5>Enter Card Details</h5>
                     <input
-                      type="text"
-                      class="form-control mb-2"
-                      placeholder="Card Number"
+                      class="form-control mb-2"                     
+                      type="tel"
+                      inputmode="numeric"
+                      required maxlength="16"
+                      pattern="[0-9\s]{13,19}"
+                      placeholder="xxxx xxxx xxxx xxxx" required
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '');"
                     />
+                    <!-- Card Name-->
                     <input
                       type="text"
                       class="form-control mb-2"
-                      placeholder="Cardholder Name"
+                      pattern="[A-Za-z]+"
+                      placeholder="Cardholder Name" required
+                      oninput="this.value = this.value.replace(/[^A-Za-z]+/g, '');"
+                    />
+                    <!-- Expiration Date -->
+                    <input
+                    type="month" 
+                    name="start" 
+                    min="2024-11" 
+                    value="2024-11"
                     />
                     <input
-                      type="text"
-                      class="form-control mb-2"
-                      placeholder="Expiration Date (MM/YY)"
-                    />
-                    <input
-                      type="text"
-                      class="form-control mb-2"
-                      placeholder="CVV"
+                    class="form-control mb-2"                     
+                     type="tel"
+                     inputmode="numeric"
+                     required maxlength="3"
+                     pattern="[0-9\s]{2,4}"
+                     placeholder="CVV"
+                     oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+
                     />
                   </div>
 
