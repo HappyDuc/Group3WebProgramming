@@ -116,3 +116,7 @@ body::before {
   width: 150px;
   height: 50px;
 }
+
+#basketList {
+  padding: 0;
+}
